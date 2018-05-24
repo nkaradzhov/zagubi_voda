@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
+import page1 from './page1'
 
 export default combineReducers({
-  test: (state = 'hi') => state
+  page1
 })
