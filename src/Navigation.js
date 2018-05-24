@@ -1,6 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Navigation = () => (
   <Navbar>
@@ -10,15 +11,15 @@ const Navigation = () => (
       </Navbar.Brand>
     </Navbar.Header>
     <Nav>
-      <NavItem>
-        <Link to="/">Home</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="/about">About</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="/topics">Topics</Link>
-      </NavItem>
+      <LinkContainer to="/page1" exact>
+        <NavItem eventKey={1}>Page1</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/about">
+        <NavItem eventKey={2}>About</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/topics">
+        <NavItem eventKey={3}>Topics</NavItem>
+      </LinkContainer>
     </Nav>
   </Navbar>
 )
