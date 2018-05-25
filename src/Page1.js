@@ -6,7 +6,8 @@ import {
   updateVlezen,
   updateSreden,
   updateKritichen,
-  updateProtok
+  updateProtok,
+  getMinProtok
 } from './reducers/page1'
 
 const Tr = ({
@@ -21,6 +22,7 @@ const Tr = ({
     <td>
       <FormControl
         value={obj.vlezen}
+        bsSize="sm"
         type="text"
         onChange={e => onVlezenChange(e.target.value)}
       />
@@ -28,6 +30,7 @@ const Tr = ({
     <td>
       <FormControl
         value={obj.sreden}
+        bsSize="sm"
         type="text"
         onChange={e => onSredenChange(e.target.value)}
       />
@@ -35,6 +38,7 @@ const Tr = ({
     <td>
       <FormControl
         value={obj.kritichen}
+        bsSize="sm"
         type="text"
         onChange={e => onKritichenChange(e.target.value)}
       />
@@ -42,6 +46,7 @@ const Tr = ({
     <td>
       <FormControl
         value={obj.protok}
+        bsSize="sm"
         type="text"
         onChange={e => onProtokChange(e.target.value)}
       />
@@ -56,8 +61,9 @@ class Page1 extends Component {
     return (
       <Grid>
         <Row className="show-grid">
-          <Col xs={12}>
-            <Table striped bordered condensed hover>
+          <Col lg={8} sm={10}>
+            {/* <Table striped bordered condensed hover bsSize="sm"> */}
+            <table className="table table-sm">
               <thead>
                 <tr>
                   <th>Час</th>
@@ -78,8 +84,13 @@ class Page1 extends Component {
                     onProtokChange={setProtok(key)}
                   />
                 ))}
+                <tr>
+                  <td colSpan="4">Minimalnata nokna potroshuvachka</td>
+                  <td>{this.props.minProtok}</td>
+                </tr>
               </tbody>
-            </Table>
+            </table>
+            {/* </Table> */}
           </Col>
         </Row>
       </Grid>
@@ -88,7 +99,8 @@ class Page1 extends Component {
 }
 
 const mstp = state => ({
-  data: state.page1
+  data: state.page1,
+  minProtok: getMinProtok(state)
 })
 
 const mdtp = dispatch => ({
