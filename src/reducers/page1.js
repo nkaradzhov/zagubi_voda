@@ -45,19 +45,14 @@ export const updateSreden = updateValAction(UPDATE_SREDEN)
 export const updateKritichen = updateValAction(UPDATE_KRITICHEN)
 export const updateProtok = updateValAction(UPDATE_PROTOK)
 
-const updateState = (state, action) =>
-  assocPath(
-    [
-      action.key,
-      {
-        UPDATE_VLEZEN: 'vlezen',
-        UPDATE_SREDEN: 'sreden',
-        UPDATE_KRITICHEN: 'kritichen',
-        UPDATE_PROTOK: 'protok'
-      }[action.type]
-    ],
-    action.val,
-    state
-  )
+const updateState = (state, action) => {
+  const prop = {
+    UPDATE_VLEZEN: 'vlezen',
+    UPDATE_SREDEN: 'sreden',
+    UPDATE_KRITICHEN: 'kritichen',
+    UPDATE_PROTOK: 'protok'
+  }[action.type]
 
+  return prop ? assocPath([action.key, prop], action.val, state) : state
+}
 export default (state = defaultState, action) => updateState(state, action)
