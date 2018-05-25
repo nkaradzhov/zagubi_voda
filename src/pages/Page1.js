@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Grid, Row, Col, FormControl } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import {
@@ -8,7 +8,7 @@ import {
   updateKritichen,
   updateProtok,
   getMinProtok
-} from './reducers/page1'
+} from '../reducers/page1'
 
 const Tr = ({
   obj,
@@ -20,33 +20,29 @@ const Tr = ({
   <tr>
     <td>{obj.hour}</td>
     <td>
-      <FormControl
-        value={obj.vlezen}
-        bsSize="sm"
+      <input
         type="text"
+        value={obj.vlezen}
         onChange={e => onVlezenChange(e.target.value)}
       />
     </td>
     <td>
-      <FormControl
+      <input
         value={obj.sreden}
-        bsSize="sm"
         type="text"
         onChange={e => onSredenChange(e.target.value)}
       />
     </td>
     <td>
-      <FormControl
+      <input
         value={obj.kritichen}
-        bsSize="sm"
         type="text"
         onChange={e => onKritichenChange(e.target.value)}
       />
     </td>
     <td>
-      <FormControl
+      <input
         value={obj.protok}
-        bsSize="sm"
         type="text"
         onChange={e => onProtokChange(e.target.value)}
       />
@@ -62,8 +58,7 @@ class Page1 extends Component {
       <Grid>
         <Row className="show-grid">
           <Col lg={8} sm={10}>
-            {/* <Table striped bordered condensed hover bsSize="sm"> */}
-            <table className="table table-sm">
+            <table>
               <thead>
                 <tr>
                   <th>Час</th>
@@ -90,7 +85,6 @@ class Page1 extends Component {
                 </tr>
               </tbody>
             </table>
-            {/* </Table> */}
           </Col>
         </Row>
       </Grid>
