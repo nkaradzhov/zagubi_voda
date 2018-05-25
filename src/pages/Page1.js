@@ -7,7 +7,7 @@ import {
   updateSreden,
   updateKritichen,
   updateProtok,
-  getMinProtok
+  getMinRow
 } from '../reducers/page1'
 
 const Tr = ({
@@ -52,7 +52,14 @@ const Tr = ({
 
 class Page1 extends Component {
   render() {
-    const { data, setVlezen, setSreden, setKritichen, setProtok } = this.props
+    const {
+      data,
+      minRow,
+      setVlezen,
+      setSreden,
+      setKritichen,
+      setProtok
+    } = this.props
 
     return (
       <Grid>
@@ -80,8 +87,16 @@ class Page1 extends Component {
                   />
                 ))}
                 <tr>
-                  <td colSpan="4">Minimalnata nokna potroshuvachka</td>
-                  <td>{this.props.minProtok}</td>
+                  <td colSpan="4">
+                    Минималната ноќна потрошувачка (измерена), m3/h
+                  </td>
+                  <td>{minRow ? minRow.protok : 'n/a'}</td>
+                </tr>
+                <tr>
+                  <td colSpan="4">
+                    Средна вредност на ноќниот притисок во мрежата
+                  </td>
+                  <td>{minRow ? minRow.sreden : 'n/a'}</td>
                 </tr>
               </tbody>
             </table>
@@ -94,7 +109,7 @@ class Page1 extends Component {
 
 const mstp = state => ({
   data: state.page1,
-  minProtok: getMinProtok(state)
+  minRow: getMinRow(state)
 })
 
 const mdtp = dispatch => ({

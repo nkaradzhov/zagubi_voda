@@ -27,11 +27,17 @@ const defaultState = {
   23: { hour: '23-24', vlezen: '', sreden: '', kritichen: '', protok: '' }
 }
 
-export const getMinProtok = state => {
-  const values = Object.keys(state.page1)
-    .map(key => parseInt(state.page1[key].protok, 10))
-    .filter(n => !isNaN(n))
-  return values.length ? Math.min.apply(null, values) : 'n/a'
+export const getMinRow = state => {
+  let min = null
+  for (let key of Object.keys(state.page1)) {
+    const row = state.page1[key]
+    const protok = parseInt(row.protok, 10)
+    if (!isNaN(protok)) {
+      if (!min) min = row
+      if (parseInt(min.protok, 10) > protok) min = row
+    }
+  }
+  return min
 }
 
 const UPDATE_VLEZEN = 'UPDATE_VLEZEN'
