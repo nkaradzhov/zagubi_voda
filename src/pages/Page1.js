@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import NumberInput from '../components/NumberInput'
 
 import {
   updateVlezen,
@@ -20,31 +21,31 @@ const Tr = ({
   <tr>
     <td>{obj.hour}</td>
     <td>
-      <input
+      <NumberInput
         type="text"
         value={obj.vlezen}
-        onChange={e => onVlezenChange(e.target.value)}
+        onChange={val => onVlezenChange(val)}
       />
     </td>
     <td>
-      <input
+      <NumberInput
         value={obj.sreden}
         type="text"
-        onChange={e => onSredenChange(e.target.value)}
+        onChange={val => onSredenChange(val)}
       />
     </td>
     <td>
-      <input
+      <NumberInput
         value={obj.kritichen}
         type="text"
-        onChange={e => onKritichenChange(e.target.value)}
+        onChange={val => onKritichenChange(val)}
       />
     </td>
     <td>
-      <input
+      <NumberInput
         value={obj.protok}
         type="text"
-        onChange={e => onProtokChange(e.target.value)}
+        onChange={val => onProtokChange(val)}
       />
     </td>
   </tr>
