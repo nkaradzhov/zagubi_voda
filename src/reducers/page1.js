@@ -31,7 +31,7 @@ export const getMinProtok = state => {
   const values = Object.keys(state.page1)
     .map(key => parseInt(state.page1[key].protok, 10))
     .filter(n => !isNaN(n))
-  return values.length ? Math.min.apply(null, values) : 0
+  return values.length ? Math.min.apply(null, values) : 'n/a'
 }
 
 const UPDATE_VLEZEN = 'UPDATE_VLEZEN'
