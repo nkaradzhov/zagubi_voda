@@ -61,7 +61,7 @@ const Page1 = ({
 }) => (
   <Grid>
     <Row className="show-grid">
-      <Col lg={8} sm={10}>
+      <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
         <table>
           <thead>
             <tr>
