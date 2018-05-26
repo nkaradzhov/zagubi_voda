@@ -5,8 +5,6 @@ const defaultState = {
   lengthOfMains: '',
   numberOfConnections: '',
   numberOfProperties: '',
-  averageZoneNightPressure: '',
-  measuredMinimumZoneNightFlow: '',
   domesticNightUsePerPerson: 2,
   numberOfSmallNonDomesticUsers: '',
   averageUseOfSmallNonDomesticUsers: '',

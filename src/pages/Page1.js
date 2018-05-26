@@ -8,7 +8,7 @@ import {
   updateSreden,
   updateKritichen,
   updateProtok,
-  getMinRow
+  selectors
 } from '../reducers/page1'
 
 const Tr = ({
@@ -53,7 +53,8 @@ const Tr = ({
 
 const Page1 = ({
   data,
-  minRow,
+  minProtok,
+  minSreden,
   setVlezen,
   setSreden,
   setKritichen,
@@ -87,13 +88,13 @@ const Page1 = ({
               <td colSpan="4">
                 Минималната ноќна потрошувачка (измерена), m3/h
               </td>
-              <td>{minRow ? minRow.protok : 'n/a'}</td>
+              <td>{minProtok}</td>
             </tr>
             <tr>
               <td colSpan="4">
                 Средна вредност на ноќниот притисок во мрежата
               </td>
-              <td>{minRow ? minRow.sreden : 'n/a'}</td>
+              <td>{minSreden}</td>
             </tr>
           </tbody>
         </table>
@@ -104,7 +105,8 @@ const Page1 = ({
 
 const mstp = state => ({
   data: state.page1,
-  minRow: getMinRow(state)
+  minProtok: selectors.minProtokSelector(state),
+  minSreden: selectors.minSredenSelector(state)
 })
 
 const mdtp = dispatch => ({

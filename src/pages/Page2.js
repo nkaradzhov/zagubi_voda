@@ -3,6 +3,7 @@ import { Grid, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import NumberInput from '../components/NumberInput'
 import { connect } from 'react-redux'
 import { updateAction, selectors } from '../reducers/page2'
+import { selectors as selectors1 } from '../reducers/page1'
 
 import './Page2.css'
 
@@ -69,12 +70,7 @@ const Page2 = ({ data, derived, change }) => (
               <BigTd>
                 Средна вредност на ноќниот притисок во мрежата, AZNP (m)
               </BigTd>
-              <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.averageZoneNightPressure}
-                  onChange={change('averageZoneNightPressure')}
-                />
-              </SmallTd>
+              <SmallTd colSpan={1}>{derived.averageZoneNightPressure}</SmallTd>
             </tr>
             <tr>
               <WithTooltip
@@ -84,10 +80,7 @@ const Page2 = ({ data, derived, change }) => (
                 Минималната ноќна потрошувачка (измерена), m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.measuredMinimumZoneNightFlow}
-                  onChange={change('measuredMinimumZoneNightFlow')}
-                />
+                {derived.measuredMinimumZoneNightFlow}
               </SmallTd>
             </tr>
             <tr>
@@ -346,7 +339,9 @@ const mstp = state => ({
   data: state.page2,
   derived: {
     estimatedPopulation: selectors.estimatedPopulationSelector(state),
-    totalNormalNightUse: selectors.totalNormalNightUseSelector(state)
+    totalNormalNightUse: selectors.totalNormalNightUseSelector(state),
+    measuredMinimumZoneNightFlow: selectors1.minProtokSelector(state),
+    averageZoneNightPressure: selectors1.minSredenSelector(state)
   }
 })
 

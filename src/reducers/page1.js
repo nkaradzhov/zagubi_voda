@@ -1,4 +1,5 @@
 import { assocPath } from 'ramda'
+import { createSelector } from 'reselect'
 
 const defaultState = {
   0: { hour: '0-1', vlezen: '', sreden: '', kritichen: '', protok: '' },
@@ -27,7 +28,7 @@ const defaultState = {
   23: { hour: '23-24', vlezen: '', sreden: '', kritichen: '', protok: '' }
 }
 
-export const getMinRow = state => {
+const minRowSelector = state => {
   let min = null
   for (let key of Object.keys(state.page1)) {
     const row = state.page1[key]
@@ -38,6 +39,20 @@ export const getMinRow = state => {
     }
   }
   return min
+}
+
+const minProtokSelector = createSelector(
+  minRowSelector,
+  row => (row ? row.protok : '')
+)
+const minSredenSelector = createSelector(
+  minRowSelector,
+  row => (row ? row.sreden : '')
+)
+
+export const selectors = {
+  minProtokSelector,
+  minSredenSelector
 }
 
 const UPDATE_VLEZEN = 'UPDATE_VLEZEN'
