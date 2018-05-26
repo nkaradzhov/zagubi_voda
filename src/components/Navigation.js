@@ -12,13 +12,16 @@ const Navigation = () => (
     </Navbar.Header>
     <Nav>
       <LinkContainer to="/page1" exact>
-        <NavItem eventKey={1}>Page1</NavItem>
+        <NavItem>Page1</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/page2" exact>
+        <NavItem>Page2</NavItem>
       </LinkContainer>
       <LinkContainer to="/about">
-        <NavItem eventKey={2}>About</NavItem>
+        <NavItem>About</NavItem>
       </LinkContainer>
       <LinkContainer to="/topics">
-        <NavItem eventKey={3}>Topics</NavItem>
+        <NavItem>Topics</NavItem>
       </LinkContainer>
     </Nav>
   </Navbar>
