@@ -243,13 +243,7 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Вкупна легална ноќна потрошувачка на корисниците, m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
-                {derived.totalNormalNightUse || ''}
-                <NumberInput
-                  value={data.totalNormalNightUse}
-                  onChange={change('totalNormalNightUse')}
-                />
-              </SmallTd>
+              <SmallTd colSpan={1}>{derived.totalNormalNightUse || ''}</SmallTd>
             </tr>
             <tr>
               <WithTooltip
