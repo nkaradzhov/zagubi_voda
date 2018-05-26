@@ -4,7 +4,9 @@ import NumberInput from '../components/NumberInput'
 import { connect } from 'react-redux'
 import { updateAction, selectors } from '../reducers/page2'
 
-const BigTd = ({ ...rest }) => <td colSpan={5} {...rest} />
+import './Page2.css'
+
+const BigTd = ({ ...rest }) => <td className="big" colSpan={5} {...rest} />
 const SmallTd = ({ ...rest }) => <td colSpan={1} {...rest} />
 
 const WithTooltip = ({ id, tooltip, ...rest }) => (
@@ -19,7 +21,7 @@ const WithTooltip = ({ id, tooltip, ...rest }) => (
 const Page2 = ({ data, derived, change }) => (
   <Grid>
     <Row>
-      <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
+      <Col lg={10} sm={10} lgOffset={1} smOffset={1}>
         <table>
           <thead>
             <tr>
