@@ -9,7 +9,6 @@ const NumberInput = ({ value, onChange, ...rest }) => (
     type="text"
     value={value}
     onChange={e => {
-      console.log(e.target.value, couldBeNumber(e.target.value))
       if (couldBeNumber(e.target.value)) {
         onChange && onChange(e.target.value)
       }
