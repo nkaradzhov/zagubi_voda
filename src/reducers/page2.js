@@ -40,7 +40,9 @@ const totalNormalNightUseSelector = createSelector(
     path(['page2', 'useByLargeNonDomesticUsers'])
   ],
   (night, population, small, avg, large) =>
-    (night * population / 1000 + small * avg / 1000 + large / 1000).toFixed(2)
+    parseFloat(
+      (night * population / 1000 + small * avg / 1000 + large / 1000).toFixed(2)
+    )
 )
 
 export const selectors = {
