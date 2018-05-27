@@ -24,28 +24,28 @@ const Tr = ({
       <NumberInput
         type="text"
         value={obj.vlezen}
-        onChange={val => onVlezenChange(val)}
+        onChange={onVlezenChange}
       />
     </td>
     <td>
       <NumberInput
         value={obj.sreden}
         type="text"
-        onChange={val => onSredenChange(val)}
+        onChange={onSredenChange}
       />
     </td>
     <td>
       <NumberInput
         value={obj.kritichen}
         type="text"
-        onChange={val => onKritichenChange(val)}
+        onChange={onKritichenChange}
       />
     </td>
     <td>
       <NumberInput
         value={obj.protok}
         type="text"
-        onChange={val => onProtokChange(val)}
+        onChange={onProtokChange}
       />
     </td>
   </tr>

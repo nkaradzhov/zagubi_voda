@@ -1,11 +1,12 @@
-import React from 'react'
-import { Grid, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import NumberInput from '../components/NumberInput'
-import { connect } from 'react-redux'
-import { updateAction, selectors } from '../reducers/page2'
+import React from "react";
+import { Grid, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
+import NumberInput from "../components/NumberInput";
+import { connect } from "react-redux";
+import { updateAction, selectors } from "../reducers/page2";
+import { getMinRow } from "../reducers/page1";
 
-const BigTd = ({ ...rest }) => <td colSpan={5} {...rest} />
-const SmallTd = ({ ...rest }) => <td colSpan={1} {...rest} />
+const BigTd = ({ ...rest }) => <td colSpan={5} {...rest} />;
+const SmallTd = ({ ...rest }) => <td colSpan={1} {...rest} />;
 
 const WithTooltip = ({ id, tooltip, ...rest }) => (
   <OverlayTrigger
@@ -14,7 +15,7 @@ const WithTooltip = ({ id, tooltip, ...rest }) => (
   >
     <BigTd {...rest} />
   </OverlayTrigger>
-)
+);
 
 const Page2 = ({ data, derived, change }) => (
   <Grid>
@@ -37,7 +38,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.lengthOfMains}
-                  onChange={change('lengthOfMains')}
+                  onChange={change("lengthOfMains")}
                 />
               </SmallTd>
             </tr>
@@ -46,7 +47,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.numberOfConnections}
-                  onChange={change('numberOfConnections')}
+                  onChange={change("numberOfConnections")}
                 />
               </SmallTd>
             </tr>
@@ -55,13 +56,13 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.numberOfProperties}
-                  onChange={change('numberOfProperties')}
+                  onChange={change("numberOfProperties")}
                 />
               </SmallTd>
             </tr>
             <tr>
               <BigTd>Број на население</BigTd>
-              <SmallTd colSpan={1}>{derived.estimatedPopulation || ''}</SmallTd>
+              <SmallTd colSpan={1}>{derived.estimatedPopulation || ""}</SmallTd>
             </tr>
             <tr>
               <BigTd>
@@ -70,7 +71,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.averageZoneNightPressure}
-                  onChange={change('averageZoneNightPressure')}
+                  onChange={change("averageZoneNightPressure")}
                 />
               </SmallTd>
             </tr>
@@ -82,10 +83,7 @@ const Page2 = ({ data, derived, change }) => (
                 Минималната ноќна потрошувачка (измерена), m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.measuredMinimumZoneNightFlow}
-                  onChange={change('measuredMinimumZoneNightFlow')}
-                />
+                {derived.measuredMinimumZoneNightFlow || ""}
               </SmallTd>
             </tr>
             <tr>
@@ -93,7 +91,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.domesticNightUsePerPerson}
-                  onChange={change('domesticNightUsePerPerson')}
+                  onChange={change("domesticNightUsePerPerson")}
                 />
               </SmallTd>
             </tr>
@@ -102,7 +100,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.numberOfSmallNonDomesticUsers}
-                  onChange={change('numberOfSmallNonDomesticUsers')}
+                  onChange={change("numberOfSmallNonDomesticUsers")}
                 />
               </SmallTd>
             </tr>
@@ -114,7 +112,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.averageUseOfSmallNonDomesticUsers}
-                  onChange={change('averageUseOfSmallNonDomesticUsers')}
+                  onChange={change("averageUseOfSmallNonDomesticUsers")}
                 />
               </SmallTd>
             </tr>
@@ -125,7 +123,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.useByLargeNonDomesticUsers}
-                  onChange={change('useByLargeNonDomesticUsers')}
+                  onChange={change("useByLargeNonDomesticUsers")}
                 />
               </SmallTd>
             </tr>
@@ -145,7 +143,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.backgroundLossesFromMains}
-                  onChange={change('backgroundLossesFromMains')}
+                  onChange={change("backgroundLossesFromMains")}
                 />
               </SmallTd>
             </tr>
@@ -159,7 +157,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.backgroundLossesFromConnections}
-                  onChange={change('backgroundLossesFromConnections')}
+                  onChange={change("backgroundLossesFromConnections")}
                 />
               </SmallTd>
             </tr>
@@ -173,7 +171,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.backgroundLossesFromProperties}
-                  onChange={change('backgroundLossesFromProperties')}
+                  onChange={change("backgroundLossesFromProperties")}
                 />
               </SmallTd>
             </tr>
@@ -188,7 +186,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.pressureExponentN1}
-                  onChange={change('pressureExponentN1')}
+                  onChange={change("pressureExponentN1")}
                 />
               </SmallTd>
             </tr>
@@ -203,7 +201,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.independentLossesPerConnection}
-                  onChange={change('independentLossesPerConnection')}
+                  onChange={change("independentLossesPerConnection")}
                 />
               </SmallTd>
             </tr>
@@ -218,7 +216,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.independentLossesPerProperty}
-                  onChange={change('independentLossesPerProperty')}
+                  onChange={change("independentLossesPerProperty")}
                 />
               </SmallTd>
             </tr>
@@ -231,7 +229,7 @@ const Page2 = ({ data, derived, change }) => (
                 <NumberInput
                   value={data.standardEquivalentServicePipeBurstAt50mPressure}
                   onChange={change(
-                    'standardEquivalentServicePipeBurstAt50mPressure'
+                    "standardEquivalentServicePipeBurstAt50mPressure"
                   )}
                 />
               </SmallTd>
@@ -243,13 +241,7 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Вкупна легална ноќна потрошувачка на корисниците, m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
-                {derived.totalNormalNightUse || ''}
-                <NumberInput
-                  value={data.totalNormalNightUse}
-                  onChange={change('totalNormalNightUse')}
-                />
-              </SmallTd>
+              <SmallTd colSpan={1}>{derived.totalNormalNightUse || ""}</SmallTd>
             </tr>
             <tr>
               <WithTooltip
@@ -259,10 +251,7 @@ const Page2 = ({ data, derived, change }) => (
                 Загуби на вода од т.н. дефекти во позадина, m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.totalBackgroundLeakegeAtActualPressure}
-                  onChange={change('totalBackgroundLeakegeAtActualPressure')}
-                />
+                {derived.totalBackgroundLeakegeAtActualPressure || ""}
               </SmallTd>
             </tr>
             <tr>
@@ -275,7 +264,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.totalExpectedNightUse}
-                  onChange={change('totalExpectedNightUse')}
+                  onChange={change("totalExpectedNightUse")}
                 />
               </SmallTd>
             </tr>
@@ -289,7 +278,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.unaccountedLeakageForNightFlow}
-                  onChange={change('unaccountedLeakageForNightFlow')}
+                  onChange={change("unaccountedLeakageForNightFlow")}
                 />
               </SmallTd>
             </tr>
@@ -304,7 +293,7 @@ const Page2 = ({ data, derived, change }) => (
                 <NumberInput
                   value={data.expectedNumberOfEquivalentServicePipeBursts}
                   onChange={change(
-                    'expectedNumberOfEquivalentServicePipeBursts'
+                    "expectedNumberOfEquivalentServicePipeBursts"
                   )}
                 />
               </SmallTd>
@@ -320,7 +309,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.pressureIndependentFlowAtMNF}
-                  onChange={change('pressureIndependentFlowAtMNF')}
+                  onChange={change("pressureIndependentFlowAtMNF")}
                 />
               </SmallTd>
             </tr>
@@ -335,7 +324,7 @@ const Page2 = ({ data, derived, change }) => (
               <SmallTd colSpan={1}>
                 <NumberInput
                   value={data.pressureDependentFlowAtMNF}
-                  onChange={change('pressureDependentFlowAtMNF')}
+                  onChange={change("pressureDependentFlowAtMNF")}
                 />
               </SmallTd>
             </tr>
@@ -344,18 +333,22 @@ const Page2 = ({ data, derived, change }) => (
       </Col>
     </Row>
   </Grid>
-)
+);
 
 const mstp = state => ({
   data: state.page2,
   derived: {
     estimatedPopulation: selectors.estimatedPopulationSelector(state),
-    totalNormalNightUse: selectors.totalNormalNightUseSelector(state)
+    totalNormalNightUse: selectors.totalNormalNightUseSelector(state),
+    totalBackgroundLeakegeAtActualPressure: selectors.totalBackgroundLeakegeAtActualPressureSelector(
+      state
+    ),
+    measuredMinimumZoneNightFlow: getMinRow(state).protok
   }
-})
+});
 
 const mdtp = dispatch => ({
   change: key => val => dispatch(updateAction(key, val))
-})
+});
 
-export default connect(mstp, mdtp)(Page2)
+export default connect(mstp, mdtp)(Page2);

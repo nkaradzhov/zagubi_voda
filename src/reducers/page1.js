@@ -37,7 +37,7 @@ export const getMinRow = state => {
       if (parseInt(min.protok, 10) > protok) min = row
     }
   }
-  return min
+  return min || {protok:0, sreden:0}
 }
 
 const UPDATE_VLEZEN = 'UPDATE_VLEZEN'
