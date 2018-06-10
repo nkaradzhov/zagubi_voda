@@ -18,12 +18,7 @@ const defaultState = {
   pressureExponentN1: 1,
   independentLossesPerConnection: 0.5,
   independentLossesPerProperty: 0.5,
-  standardEquivalentServicePipeBurstAt50mPressure: 1.6,
-  totalExpectedNightUse: "",
-  unaccountedLeakageForNightFlow: "",
-  expectedNumberOfEquivalentServicePipeBursts: "",
-  pressureIndependentFlowAtMNF: "",
-  pressureDependentFlowAtMNF: ""
+  standardEquivalentServicePipeBurstAt50mPressure: 1.6
 };
 
 const estimatedPopulationSelector = createSelector(
@@ -72,10 +67,68 @@ const totalBackgroundLeakegeAtActualPressureSelector = createSelector(
     ).toFixed(2)
 );
 
+const totalExpectedNightUseSelector = createSelector(
+  [
+    totalBackgroundLeakegeAtActualPressureSelector,
+    totalNormalNightUseSelector
+  ],
+  (totalBackgroundLeakegeAtActualPressure, totalNormalNightUse) =>
+    totalBackgroundLeakegeAtActualPressure + totalNormalNightUse
+);
+
+const unaccountedLeakageForNightFlowSelector = createSelector(
+  [
+    path(["page2", "measuredMinimumZoneNightFlow"]),
+    totalExpectedNightUseSelector
+  ],
+  (measuredMinimumZoneNightFlow, totalExpectedNightUse) =>
+    measuredMinimumZoneNightFlow - totalExpectedNightUse
+);
+
+const expectedNumberOfEquivalentServicePipeBurstsSelector = createSelector(
+  [
+    unaccountedLeakageForNightFlowSelector,
+    path(["page2", "standardEquivalentServicePipeBurstAt50mPressure"]),
+    path(["page2", "averageZoneNightPressure"])
+  ],
+  (unaccountedLeakageForNightFlow, standardEquivalentServicePipeBurstAt50mPressure, averageZoneNightPressure) =>
+    unaccountedLeakageForNightFlow/(standardEquivalentServicePipeBurstAt50mPressure * Math.pow(averageZoneNightPressure / 50, 1.5))
+
+);
+
+const pressureIndependentFlowAtMNFSelector = createSelector(
+  [
+    totalNormalNightUseSelector,
+    path(["page2", "independentLossesPerConnection"]),
+    path(["page2", "numberOfConnections"]),
+    path(["page2", "independentLossesPerProperty"]),
+    path(["page2", "numberOfProperties"]),
+  ],
+  (totalNormalNightUse, independentLossesPerConnection, numberOfConnections, independentLossesPerProperty, numberOfProperties) =>
+    (totalNormalNightUse+(independentLossesPerConnection*numberOfConnections/1000)+(independentLossesPerProperty*numberOfProperties/1000)).toFixed(2)
+);
+
+const pressureDependentFlowAtMNFSelector = createSelector(
+  [
+    path(["page2", "measuredMinimumZoneNightFlow"]),
+    pressureIndependentFlowAtMNFSelector
+  ],
+  (measuredMinimumZoneNightFlow, pressureIndependentFlowAtMNF) =>
+    measuredMinimumZoneNightFlow - pressureIndependentFlowAtMNF
+);
+
+
+
+
 export const selectors = {
   estimatedPopulationSelector,
   totalNormalNightUseSelector,
-  totalBackgroundLeakegeAtActualPressureSelector
+  totalBackgroundLeakegeAtActualPressureSelector,
+  totalExpectedNightUseSelector,
+  unaccountedLeakageForNightFlowSelector,
+  expectedNumberOfEquivalentServicePipeBurstsSelector,
+  pressureDependentFlowAtMNFSelector,
+  pressureIndependentFlowAtMNFSelector
 };
 
 const P2_UPDATE = "P2_UPDATE";
