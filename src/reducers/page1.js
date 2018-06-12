@@ -51,6 +51,7 @@ const minSredenSelector = createSelector(
 )
 
 export const selectors = {
+  minRowSelector,
   minProtokSelector,
   minSredenSelector
 }

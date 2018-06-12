@@ -1,5 +1,6 @@
 import { path, assocPath } from 'ramda'
 import { createSelector } from 'reselect'
+import { selectors as selectors1 } from './page1'
 
 const defaultState = {
   lengthOfMains: '',
@@ -15,13 +16,7 @@ const defaultState = {
   pressureExponentN1: 1,
   independentLossesPerConnection: 0.5,
   independentLossesPerProperty: 0.5,
-  standardEquivalentServicePipeBurstAt50mPressure: 1.6,
-  totalBackgroundLeakegeAtActualPressure: '',
-  totalExpectedNightUse: '',
-  unaccountedLeakageForNightFlow: '',
-  expectedNumberOfEquivalentServicePipeBursts: '',
-  pressureIndependentFlowAtMNF: '',
-  pressureDependentFlowAtMNF: ''
+  standardEquivalentServicePipeBurstAt50mPressure: 1.6
 }
 
 const estimatedPopulationSelector = createSelector(
@@ -39,13 +34,116 @@ const totalNormalNightUseSelector = createSelector(
   ],
   (night, population, small, avg, large) =>
     parseFloat(
-      (night * population / 1000 + small * avg / 1000 + large / 1000).toFixed(2)
+      (
+        (night * population) / 1000 +
+        (small * avg) / 1000 +
+        large / 1000
+      ).toFixed(2)
     )
+)
+
+const totalBackgroundLeakegeAtActualPressureSelector = createSelector(
+  [
+    path(['page2', 'lengthOfMains']),
+    path(['page2', 'backgroundLossesFromMains']),
+    path(['page2', 'numberOfConnections']),
+    path(['page2', 'backgroundLossesFromConnections']),
+    path(['page2', 'numberOfProperties']),
+    path(['page2', 'backgroundLossesFromProperties']),
+    state => {
+      const minRow = selectors1.minRowSelector(state)
+      return parseFloat(minRow ? minRow.sreden : 0)
+    }
+  ],
+  (
+    lengthOfMains,
+    backgroundLossesFromMains,
+    numberOfConnections,
+    backgroundLossesFromConnections,
+    numberOfProperties,
+    backgroundLossesFromProperties,
+    averageZoneNightPressure
+  ) =>
+    (
+      (lengthOfMains * backgroundLossesFromMains) / 1000 +
+      (numberOfConnections * backgroundLossesFromConnections) / 1000 +
+      ((numberOfProperties * backgroundLossesFromProperties) / 1000) *
+        Math.pow(averageZoneNightPressure / 50, 1.5)
+    ).toFixed(2)
+)
+
+const totalExpectedNightUseSelector = createSelector(
+  [totalBackgroundLeakegeAtActualPressureSelector, totalNormalNightUseSelector],
+  (totalBackgroundLeakegeAtActualPressure, totalNormalNightUse) =>
+    (
+      parseFloat(totalBackgroundLeakegeAtActualPressure) +
+      parseFloat(totalNormalNightUse)
+    ).toFixed(2)
+)
+
+const unaccountedLeakageForNightFlowSelector = createSelector(
+  [
+    path(['page2', 'measuredMinimumZoneNightFlow']),
+    totalExpectedNightUseSelector
+  ],
+  (measuredMinimumZoneNightFlow, totalExpectedNightUse) =>
+    measuredMinimumZoneNightFlow - totalExpectedNightUse
+)
+
+const expectedNumberOfEquivalentServicePipeBurstsSelector = createSelector(
+  [
+    unaccountedLeakageForNightFlowSelector,
+    path(['page2', 'standardEquivalentServicePipeBurstAt50mPressure']),
+    path(['page2', 'averageZoneNightPressure'])
+  ],
+  (
+    unaccountedLeakageForNightFlow,
+    standardEquivalentServicePipeBurstAt50mPressure,
+    averageZoneNightPressure
+  ) =>
+    unaccountedLeakageForNightFlow /
+    (standardEquivalentServicePipeBurstAt50mPressure *
+      Math.pow(averageZoneNightPressure / 50, 1.5))
+)
+
+const pressureIndependentFlowAtMNFSelector = createSelector(
+  [
+    totalNormalNightUseSelector,
+    path(['page2', 'independentLossesPerConnection']),
+    path(['page2', 'numberOfConnections']),
+    path(['page2', 'independentLossesPerProperty']),
+    path(['page2', 'numberOfProperties'])
+  ],
+  (
+    totalNormalNightUse,
+    independentLossesPerConnection,
+    numberOfConnections,
+    independentLossesPerProperty,
+    numberOfProperties
+  ) =>
+    totalNormalNightUse +
+    (independentLossesPerConnection * numberOfConnections) / 1000 +
+    (independentLossesPerProperty * numberOfProperties) / 1000
+)
+
+const pressureDependentFlowAtMNFSelector = createSelector(
+  [
+    path(['page2', 'measuredMinimumZoneNightFlow']),
+    pressureIndependentFlowAtMNFSelector
+  ],
+  (measuredMinimumZoneNightFlow, pressureIndependentFlowAtMNF) =>
+    measuredMinimumZoneNightFlow - pressureIndependentFlowAtMNF
 )
 
 export const selectors = {
   estimatedPopulationSelector,
-  totalNormalNightUseSelector
+  totalNormalNightUseSelector,
+  totalBackgroundLeakegeAtActualPressureSelector,
+  totalExpectedNightUseSelector,
+  unaccountedLeakageForNightFlowSelector,
+  expectedNumberOfEquivalentServicePipeBurstsSelector,
+  pressureDependentFlowAtMNFSelector,
+  pressureIndependentFlowAtMNFSelector
 }
 
 const P2_UPDATE = 'P2_UPDATE'

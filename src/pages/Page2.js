@@ -80,7 +80,7 @@ const Page2 = ({ data, derived, change }) => (
                 Минималната ноќна потрошувачка (измерена), m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                {derived.measuredMinimumZoneNightFlow}
+                {derived.measuredMinimumZoneNightFlow || ''}
               </SmallTd>
             </tr>
             <tr>
@@ -248,10 +248,7 @@ const Page2 = ({ data, derived, change }) => (
                 Загуби на вода од т.н. дефекти во позадина, m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.totalBackgroundLeakegeAtActualPressure}
-                  onChange={change('totalBackgroundLeakegeAtActualPressure')}
-                />
+                {derived.totalBackgroundLeakegeAtActualPressure || ''}
               </SmallTd>
             </tr>
             <tr>
@@ -262,10 +259,7 @@ const Page2 = ({ data, derived, change }) => (
                 Вкупна очекувана ноќна потрошувачка, m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.totalExpectedNightUse}
-                  onChange={change('totalExpectedNightUse')}
-                />
+                {derived.totalExpectedNightUse || ''}
               </SmallTd>
             </tr>
             <tr>
@@ -276,10 +270,7 @@ const Page2 = ({ data, derived, change }) => (
                 Неочекувани загуби на вода (неоткриени дефекти), m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.unaccountedLeakageForNightFlow}
-                  onChange={change('unaccountedLeakageForNightFlow')}
-                />
+                {derived.unaccountedLeakageForNightFlow || ''}
               </SmallTd>
             </tr>
             <tr>
@@ -290,12 +281,7 @@ const Page2 = ({ data, derived, change }) => (
                 Очекуван број на дефекти на цевководите
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.expectedNumberOfEquivalentServicePipeBursts}
-                  onChange={change(
-                    'expectedNumberOfEquivalentServicePipeBursts'
-                  )}
-                />
+                {derived.expectedNumberOfEquivalentServicePipeBursts || ''}
               </SmallTd>
             </tr>
             <tr>
@@ -307,10 +293,7 @@ const Page2 = ({ data, derived, change }) => (
                 мрежата, m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.pressureIndependentFlowAtMNF}
-                  onChange={change('pressureIndependentFlowAtMNF')}
-                />
+                {derived.pressureIndependentFlowAtMNF || ''}
               </SmallTd>
             </tr>
             <tr>
@@ -322,10 +305,7 @@ const Page2 = ({ data, derived, change }) => (
                 m3/h
               </WithTooltip>
               <SmallTd colSpan={1}>
-                <NumberInput
-                  value={data.pressureDependentFlowAtMNF}
-                  onChange={change('pressureDependentFlowAtMNF')}
-                />
+                {derived.pressureDependentFlowAtMNF || ''}
               </SmallTd>
             </tr>
           </tbody>
@@ -341,7 +321,23 @@ const mstp = state => ({
     estimatedPopulation: selectors.estimatedPopulationSelector(state),
     totalNormalNightUse: selectors.totalNormalNightUseSelector(state),
     measuredMinimumZoneNightFlow: selectors1.minProtokSelector(state),
-    averageZoneNightPressure: selectors1.minSredenSelector(state)
+    averageZoneNightPressure: selectors1.minSredenSelector(state),
+    totalBackgroundLeakegeAtActualPressure: selectors.totalBackgroundLeakegeAtActualPressureSelector(
+      state
+    ),
+    totalExpectedNightUse: selectors.totalExpectedNightUseSelector(state),
+    unaccountedLeakageForNightFlow: selectors.unaccountedLeakageForNightFlowSelector(
+      state
+    ),
+    expectedNumberOfEquivalentServicePipeBursts: selectors.expectedNumberOfEquivalentServicePipeBurstsSelector(
+      state
+    ),
+    pressureDependentFlowAtMNF: selectors.pressureDependentFlowAtMNFSelector(
+      state
+    ),
+    pressureIndependentFlowAtMNF: selectors.pressureDependentFlowAtMNFSelector(
+      state
+    )
   }
 })
 
@@ -349,4 +345,7 @@ const mdtp = dispatch => ({
   change: key => val => dispatch(updateAction(key, val))
 })
 
-export default connect(mstp, mdtp)(Page2)
+export default connect(
+  mstp,
+  mdtp
+)(Page2)
