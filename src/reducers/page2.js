@@ -105,7 +105,7 @@ const pressureIndependentFlowAtMNFSelector = createSelector(
     path(["page2", "numberOfProperties"]),
   ],
   (totalNormalNightUse, independentLossesPerConnection, numberOfConnections, independentLossesPerProperty, numberOfProperties) =>
-    (totalNormalNightUse+(independentLossesPerConnection*numberOfConnections/1000)+(independentLossesPerProperty*numberOfProperties/1000)).toFixed(2)
+    totalNormalNightUse+(independentLossesPerConnection*numberOfConnections/1000)+(independentLossesPerProperty*numberOfProperties/1000)
 );
 
 const pressureDependentFlowAtMNFSelector = createSelector(
@@ -116,8 +116,6 @@ const pressureDependentFlowAtMNFSelector = createSelector(
   (measuredMinimumZoneNightFlow, pressureIndependentFlowAtMNF) =>
     measuredMinimumZoneNightFlow - pressureIndependentFlowAtMNF
 );
-
-
 
 
 export const selectors = {
