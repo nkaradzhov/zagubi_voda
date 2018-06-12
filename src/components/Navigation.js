@@ -20,12 +20,6 @@ const Navigation = () => (
       <LinkContainer to="/page3" exact>
         <NavItem>Page3</NavItem>
       </LinkContainer>
-      <LinkContainer to="/about">
-        <NavItem>About</NavItem>
-      </LinkContainer>
-      <LinkContainer to="/topics">
-        <NavItem>Topics</NavItem>
-      </LinkContainer>
     </Nav>
   </Navbar>
 )

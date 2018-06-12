@@ -6,10 +6,9 @@ import store from './store'
 
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
+import Page3 from './pages/Page3'
 
 const Home = () => <h1>Home Page</h1>
-const About = () => <div>about</div>
-const Topics = () => <div>topic</div>
 
 class Root extends Component {
   render() {
@@ -21,8 +20,7 @@ class Root extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/page1" component={Page1} />
             <Route path="/page2" component={Page2} />
-            <Route path="/about" component={About} />
-            <Route path="/topics" component={Topics} />
+            <Route path="/page3" component={Page3} />
           </div>
         </Router>
       </Provider>
