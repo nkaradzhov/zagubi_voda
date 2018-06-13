@@ -58,12 +58,10 @@ const totalBackgroundLeakegeAtActualPressureSelector = createSelector(
     averageZoneNightPressure
   ) =>
     (
-      lengthOfMains * backgroundLossesFromMains / 1000 +
-      numberOfConnections * backgroundLossesFromConnections / 1000 +
-      numberOfProperties *
-        backgroundLossesFromProperties /
-        1000 *
-        Math.pow(averageZoneNightPressure / 50, 1.5)
+      (lengthOfMains * backgroundLossesFromMains / 1000 +
+        numberOfConnections * backgroundLossesFromConnections / 1000 +
+        numberOfProperties * backgroundLossesFromProperties / 1000) *
+      Math.pow(averageZoneNightPressure / 50, 1.5)
     ).toFixed(2)
 )
 

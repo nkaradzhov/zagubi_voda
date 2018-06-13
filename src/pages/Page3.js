@@ -14,7 +14,7 @@ const Page3 = ({
           <thead>
             <tr>
               <th>Час</th>
-              <th>Редукција на влезниот притисок</th>
+              <th>Редуциран влезен притисок</th>
               <th>Дефиниран среден притисок</th>
               <th>Нов пресметан критичен притисок</th>
             </tr>
@@ -23,7 +23,7 @@ const Page3 = ({
             {data.map((val, i) => (
               <tr key={i}>
                 <td colSpan={1}>{val.hour}</td>
-                <td colSpan={1}>{val.redukcijaNaVlezenPritisok}</td>
+                <td colSpan={1}>{val.reduciranVlezen}</td>
                 <td colSpan={1}>{val.novSredenPritisok}</td>
               </tr>
             ))}

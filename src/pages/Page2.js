@@ -335,7 +335,7 @@ const mstp = state => ({
     pressureDependentFlowAtMNF: selectors.pressureDependentFlowAtMNFSelector(
       state
     ),
-    pressureIndependentFlowAtMNF: selectors.pressureDependentFlowAtMNFSelector(
+    pressureIndependentFlowAtMNF: selectors.pressureIndependentFlowAtMNFSelector(
       state
     )
   }
@@ -345,7 +345,4 @@ const mdtp = dispatch => ({
   change: key => val => dispatch(updateAction(key, val))
 })
 
-export default connect(
-  mstp,
-  mdtp
-)(Page2)
+export default connect(mstp, mdtp)(Page2)
