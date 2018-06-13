@@ -1,11 +1,11 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import selectors3 from '../selectors/Page3Selectors'
+import { selectors } from '../selectors/Page3Selectors'
 
 const Page3 = ({
   //ask for any selected data here
-  foo
+  data
 }) => (
   <Grid>
     <Row className="show-grid">
@@ -13,14 +13,21 @@ const Page3 = ({
         <table>
           <thead>
             <tr>
-              <th>{foo}</th>
-              <th>Влезен притисок (m)</th>
-              <th>Среден притисок (m)</th>
-              <th>Критичен притисок (m)</th>
-              <th>Влезен проток (m3/h)</th>
+              <th>Час</th>
+              <th>Редукција на влезниот притисок</th>
+              <th>Дефиниран среден притисок</th>
+              <th>Нов пресметан критичен притисок</th>
             </tr>
           </thead>
-          <tbody />
+          <tbody>
+            {data.map((val, i) => (
+              <tr key={i}>
+                <td colSpan={1}>{val.hour}</td>
+                <td colSpan={1}>{val.redukcijaNaVlezenPritisok}</td>
+                <td colSpan={1}>{val.novSredenPritisok}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </Col>
     </Row>
@@ -28,8 +35,7 @@ const Page3 = ({
 )
 
 const mstp = state => ({
-  //call selectors3 here
-  foo: selectors3.foo()
+  data: selectors.page3DataSelector(state)
 })
 
 export default connect(mstp)(Page3)

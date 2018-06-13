@@ -2,8 +2,8 @@ import { assocPath } from 'ramda'
 import { createSelector } from 'reselect'
 
 const defaultState = {
-  0: { hour: '0-1', vlezen: '', sreden: '', kritichen: '', protok: '' },
-  1: { hour: '1-2', vlezen: '', sreden: '', kritichen: '', protok: '' },
+  0: { hour: '0-1', vlezen: 1, sreden: 1, kritichen: 1, protok: 1 },
+  1: { hour: '1-2', vlezen: 2, sreden: 2, kritichen: 2, protok: 2 },
   2: { hour: '2-3', vlezen: '', sreden: '', kritichen: '', protok: '' },
   3: { hour: '3-4', vlezen: '', sreden: '', kritichen: '', protok: '' },
   4: { hour: '4-5', vlezen: '', sreden: '', kritichen: '', protok: '' },
