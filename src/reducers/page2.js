@@ -3,13 +3,13 @@ import { createSelector } from 'reselect'
 import { selectors as selectors1 } from './page1'
 
 const defaultState = {
-  lengthOfMains: '',
-  numberOfConnections: '',
-  numberOfProperties: '',
+  lengthOfMains: 33,
+  numberOfConnections: 3450,
+  numberOfProperties: 4150,
   domesticNightUsePerPerson: 2,
-  numberOfSmallNonDomesticUsers: '',
-  averageUseOfSmallNonDomesticUsers: '',
-  useByLargeNonDomesticUsers: '',
+  numberOfSmallNonDomesticUsers: 0,
+  averageUseOfSmallNonDomesticUsers: 0,
+  useByLargeNonDomesticUsers: 0,
   backgroundLossesFromMains: 40,
   backgroundLossesFromConnections: 3,
   backgroundLossesFromProperties: 1,
@@ -34,11 +34,7 @@ const totalNormalNightUseSelector = createSelector(
   ],
   (night, population, small, avg, large) =>
     parseFloat(
-      (
-        (night * population) / 1000 +
-        (small * avg) / 1000 +
-        large / 1000
-      ).toFixed(2)
+      (night * population / 1000 + small * avg / 1000 + large / 1000).toFixed(2)
     )
 )
 
@@ -50,10 +46,7 @@ const totalBackgroundLeakegeAtActualPressureSelector = createSelector(
     path(['page2', 'backgroundLossesFromConnections']),
     path(['page2', 'numberOfProperties']),
     path(['page2', 'backgroundLossesFromProperties']),
-    state => {
-      const minRow = selectors1.minRowSelector(state)
-      return parseFloat(minRow ? minRow.sreden : 0)
-    }
+    selectors1.minSredenSelector
   ],
   (
     lengthOfMains,
@@ -65,9 +58,11 @@ const totalBackgroundLeakegeAtActualPressureSelector = createSelector(
     averageZoneNightPressure
   ) =>
     (
-      (lengthOfMains * backgroundLossesFromMains) / 1000 +
-      (numberOfConnections * backgroundLossesFromConnections) / 1000 +
-      ((numberOfProperties * backgroundLossesFromProperties) / 1000) *
+      lengthOfMains * backgroundLossesFromMains / 1000 +
+      numberOfConnections * backgroundLossesFromConnections / 1000 +
+      numberOfProperties *
+        backgroundLossesFromProperties /
+        1000 *
         Math.pow(averageZoneNightPressure / 50, 1.5)
     ).toFixed(2)
 )
@@ -82,10 +77,7 @@ const totalExpectedNightUseSelector = createSelector(
 )
 
 const unaccountedLeakageForNightFlowSelector = createSelector(
-  [
-    path(['page2', 'measuredMinimumZoneNightFlow']),
-    totalExpectedNightUseSelector
-  ],
+  [selectors1.minProtokSelector, totalExpectedNightUseSelector],
   (measuredMinimumZoneNightFlow, totalExpectedNightUse) =>
     measuredMinimumZoneNightFlow - totalExpectedNightUse
 )
@@ -94,7 +86,7 @@ const expectedNumberOfEquivalentServicePipeBurstsSelector = createSelector(
   [
     unaccountedLeakageForNightFlowSelector,
     path(['page2', 'standardEquivalentServicePipeBurstAt50mPressure']),
-    path(['page2', 'averageZoneNightPressure'])
+    selectors1.minSredenSelector
   ],
   (
     unaccountedLeakageForNightFlow,
@@ -122,15 +114,12 @@ const pressureIndependentFlowAtMNFSelector = createSelector(
     numberOfProperties
   ) =>
     totalNormalNightUse +
-    (independentLossesPerConnection * numberOfConnections) / 1000 +
-    (independentLossesPerProperty * numberOfProperties) / 1000
+    independentLossesPerConnection * numberOfConnections / 1000 +
+    independentLossesPerProperty * numberOfProperties / 1000
 )
 
 const pressureDependentFlowAtMNFSelector = createSelector(
-  [
-    path(['page2', 'measuredMinimumZoneNightFlow']),
-    pressureIndependentFlowAtMNFSelector
-  ],
+  [selectors1.minProtokSelector, pressureIndependentFlowAtMNFSelector],
   (measuredMinimumZoneNightFlow, pressureIndependentFlowAtMNF) =>
     measuredMinimumZoneNightFlow - pressureIndependentFlowAtMNF
 )
