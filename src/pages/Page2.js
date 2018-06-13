@@ -4,11 +4,17 @@ import NumberInput from '../components/NumberInput'
 import { connect } from 'react-redux'
 import { updateAction, selectors } from '../reducers/page2'
 import { selectors as selectors1 } from '../reducers/page1'
+import Highlight from '../components/Highlight'
 
 import './Page2.css'
 
 const BigTd = ({ ...rest }) => <td className="big" colSpan={5} {...rest} />
 const SmallTd = ({ ...rest }) => <td colSpan={1} {...rest} />
+const Highlighted = ({ children }) => (
+  <Highlight>
+    <SmallTd>{children}</SmallTd>
+  </Highlight>
+)
 
 const WithTooltip = ({ id, tooltip, ...rest }) => (
   <OverlayTrigger
@@ -64,13 +70,17 @@ const Page2 = ({ data, derived, change }) => (
             </tr>
             <tr>
               <BigTd>Број на население</BigTd>
-              <SmallTd colSpan={1}>{derived.estimatedPopulation || ''}</SmallTd>
+              <Highlighted colSpan={1}>
+                {derived.estimatedPopulation || ''}
+              </Highlighted>
             </tr>
             <tr>
               <BigTd>
                 Средна вредност на ноќниот притисок во мрежата, AZNP (m)
               </BigTd>
-              <SmallTd colSpan={1}>{derived.averageZoneNightPressure}</SmallTd>
+              <Highlighted colSpan={1}>
+                {derived.averageZoneNightPressure}
+              </Highlighted>
             </tr>
             <tr>
               <WithTooltip
@@ -79,9 +89,9 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Минималната ноќна потрошувачка (измерена), m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
+              <Highlighted colSpan={1}>
                 {derived.measuredMinimumZoneNightFlow || ''}
-              </SmallTd>
+              </Highlighted>
             </tr>
             <tr>
               <BigTd>Просечна ноќна потрошувачка на жител л/ лице /час</BigTd>
@@ -238,7 +248,9 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Вкупна легална ноќна потрошувачка на корисниците, m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>{derived.totalNormalNightUse || ''}</SmallTd>
+              <Highlighted colSpan={1}>
+                {derived.totalNormalNightUse || ''}
+              </Highlighted>
             </tr>
             <tr>
               <WithTooltip
@@ -247,9 +259,9 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Загуби на вода од т.н. дефекти во позадина, m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
+              <Highlighted colSpan={1}>
                 {derived.totalBackgroundLeakegeAtActualPressure || ''}
-              </SmallTd>
+              </Highlighted>
             </tr>
             <tr>
               <WithTooltip
@@ -258,9 +270,9 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Вкупна очекувана ноќна потрошувачка, m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
+              <Highlighted colSpan={1}>
                 {derived.totalExpectedNightUse || ''}
-              </SmallTd>
+              </Highlighted>
             </tr>
             <tr>
               <WithTooltip
@@ -269,9 +281,9 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Неочекувани загуби на вода (неоткриени дефекти), m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
+              <Highlighted colSpan={1}>
                 {derived.unaccountedLeakageForNightFlow || ''}
-              </SmallTd>
+              </Highlighted>
             </tr>
             <tr>
               <WithTooltip
@@ -280,9 +292,9 @@ const Page2 = ({ data, derived, change }) => (
               >
                 Очекуван број на дефекти на цевководите
               </WithTooltip>
-              <SmallTd colSpan={1}>
+              <Highlighted colSpan={1}>
                 {derived.expectedNumberOfEquivalentServicePipeBursts || ''}
-              </SmallTd>
+              </Highlighted>
             </tr>
             <tr>
               <WithTooltip
@@ -292,9 +304,9 @@ const Page2 = ({ data, derived, change }) => (
                 Истекување од дефекти независни од работниот притисок во
                 мрежата, m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
+              <Highlighted colSpan={1}>
                 {derived.pressureIndependentFlowAtMNF || ''}
-              </SmallTd>
+              </Highlighted>
             </tr>
             <tr>
               <WithTooltip
@@ -304,9 +316,9 @@ const Page2 = ({ data, derived, change }) => (
                 Истекување од дефекти зависни од работниот притисок во мрежата,
                 m3/h
               </WithTooltip>
-              <SmallTd colSpan={1}>
+              <Highlighted colSpan={1}>
                 {derived.pressureDependentFlowAtMNF || ''}
-              </SmallTd>
+              </Highlighted>
             </tr>
           </tbody>
         </table>
@@ -345,4 +357,7 @@ const mdtp = dispatch => ({
   change: key => val => dispatch(updateAction(key, val))
 })
 
-export default connect(mstp, mdtp)(Page2)
+export default connect(
+  mstp,
+  mdtp
+)(Page2)
