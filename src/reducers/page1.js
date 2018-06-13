@@ -59,6 +59,11 @@ const minRowSelector = state => {
   return min
 }
 
+const minRowHourSelector = createSelector(
+  minRowSelector,
+  row => (row ? row.hour : '')
+)
+
 const minProtokSelector = createSelector(
   minRowSelector,
   row => (row ? row.protok : '')
@@ -70,6 +75,7 @@ const minSredenSelector = createSelector(
 
 export const selectors = {
   minRowSelector,
+  minRowHourSelector,
   minProtokSelector,
   minSredenSelector
 }

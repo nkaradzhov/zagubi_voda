@@ -28,3 +28,8 @@ input {
   outline-color: green;
   outline-width: 2px;
 }
+
+.highlighted,
+.highlighted input {
+  background-color: lightgoldenrodyellow;
+}
