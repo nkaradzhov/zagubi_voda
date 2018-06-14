@@ -33,9 +33,7 @@ const totalNormalNightUseSelector = createSelector(
     path(['page2', 'useByLargeNonDomesticUsers'])
   ],
   (night, population, small, avg, large) =>
-    parseFloat(
-      (night * population / 1000 + small * avg / 1000 + large / 1000).toFixed(2)
-    )
+    (night * population) / 1000 + (small * avg) / 1000 + large / 1000
 )
 
 const totalBackgroundLeakegeAtActualPressureSelector = createSelector(
@@ -57,21 +55,16 @@ const totalBackgroundLeakegeAtActualPressureSelector = createSelector(
     backgroundLossesFromProperties,
     averageZoneNightPressure
   ) =>
-    (
-      (lengthOfMains * backgroundLossesFromMains / 1000 +
-        numberOfConnections * backgroundLossesFromConnections / 1000 +
-        numberOfProperties * backgroundLossesFromProperties / 1000) *
-      Math.pow(averageZoneNightPressure / 50, 1.5)
-    ).toFixed(2)
+    ((lengthOfMains * backgroundLossesFromMains) / 1000 +
+      (numberOfConnections * backgroundLossesFromConnections) / 1000 +
+      (numberOfProperties * backgroundLossesFromProperties) / 1000) *
+    Math.pow(averageZoneNightPressure / 50, 1.5)
 )
 
 const totalExpectedNightUseSelector = createSelector(
   [totalBackgroundLeakegeAtActualPressureSelector, totalNormalNightUseSelector],
   (totalBackgroundLeakegeAtActualPressure, totalNormalNightUse) =>
-    (
-      parseFloat(totalBackgroundLeakegeAtActualPressure) +
-      parseFloat(totalNormalNightUse)
-    ).toFixed(2)
+    totalBackgroundLeakegeAtActualPressure + totalNormalNightUse
 )
 
 const unaccountedLeakageForNightFlowSelector = createSelector(
@@ -112,8 +105,8 @@ const pressureIndependentFlowAtMNFSelector = createSelector(
     numberOfProperties
   ) =>
     totalNormalNightUse +
-    independentLossesPerConnection * numberOfConnections / 1000 +
-    independentLossesPerProperty * numberOfProperties / 1000
+    (independentLossesPerConnection * numberOfConnections) / 1000 +
+    (independentLossesPerProperty * numberOfProperties) / 1000
 )
 
 const pressureDependentFlowAtMNFSelector = createSelector(

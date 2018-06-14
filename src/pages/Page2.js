@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { updateAction, selectors } from '../reducers/page2'
 import { selectors as selectors1 } from '../reducers/page1'
 import Highlight from '../components/Highlight'
+import round from '../util/round'
 
 import './Page2.css'
 
@@ -71,7 +72,7 @@ const Page2 = ({ data, derived, change }) => (
             <tr>
               <BigTd>Број на население</BigTd>
               <Highlighted colSpan={1}>
-                {derived.estimatedPopulation || ''}
+                {round(derived.estimatedPopulation)}
               </Highlighted>
             </tr>
             <tr>
@@ -90,7 +91,7 @@ const Page2 = ({ data, derived, change }) => (
                 Минималната ноќна потрошувачка (измерена), m3/h
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.measuredMinimumZoneNightFlow || ''}
+                {round(derived.measuredMinimumZoneNightFlow)}
               </Highlighted>
             </tr>
             <tr>
@@ -249,7 +250,7 @@ const Page2 = ({ data, derived, change }) => (
                 Вкупна легална ноќна потрошувачка на корисниците, m3/h
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.totalNormalNightUse || ''}
+                {round(derived.totalNormalNightUse)}
               </Highlighted>
             </tr>
             <tr>
@@ -260,7 +261,7 @@ const Page2 = ({ data, derived, change }) => (
                 Загуби на вода од т.н. дефекти во позадина, m3/h
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.totalBackgroundLeakegeAtActualPressure || ''}
+                {round(derived.totalBackgroundLeakegeAtActualPressure)}
               </Highlighted>
             </tr>
             <tr>
@@ -271,7 +272,7 @@ const Page2 = ({ data, derived, change }) => (
                 Вкупна очекувана ноќна потрошувачка, m3/h
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.totalExpectedNightUse || ''}
+                {round(derived.totalExpectedNightUse)}
               </Highlighted>
             </tr>
             <tr>
@@ -282,7 +283,7 @@ const Page2 = ({ data, derived, change }) => (
                 Неочекувани загуби на вода (неоткриени дефекти), m3/h
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.unaccountedLeakageForNightFlow || ''}
+                {round(derived.unaccountedLeakageForNightFlow)}
               </Highlighted>
             </tr>
             <tr>
@@ -293,7 +294,7 @@ const Page2 = ({ data, derived, change }) => (
                 Очекуван број на дефекти на цевководите
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.expectedNumberOfEquivalentServicePipeBursts || ''}
+                {round(derived.expectedNumberOfEquivalentServicePipeBursts)}
               </Highlighted>
             </tr>
             <tr>
@@ -305,7 +306,7 @@ const Page2 = ({ data, derived, change }) => (
                 мрежата, m3/h
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.pressureIndependentFlowAtMNF || ''}
+                {round(derived.pressureIndependentFlowAtMNF)}
               </Highlighted>
             </tr>
             <tr>
@@ -317,7 +318,7 @@ const Page2 = ({ data, derived, change }) => (
                 m3/h
               </WithTooltip>
               <Highlighted colSpan={1}>
-                {derived.pressureDependentFlowAtMNF || ''}
+                {round(derived.pressureDependentFlowAtMNF)}
               </Highlighted>
             </tr>
           </tbody>
