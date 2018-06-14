@@ -54,10 +54,21 @@ const getNovSredenPritisok = (
     let n = m + pressureIndependentFlow
     let o = kFaktorST * Math.pow(n, 2)
     nov = reduciranVlezen - o
-    console.log("redukcijaNaVlezenPritisok: " + redukcijaNaVlezenPritisok + "pressureDependentFlow: " + pressureDependentFlow + "pressureIndependentFlow" + pressureIndependentFlow + "kFaktorST" + kFaktorST )
-    console.log("nov: " + nov + "row: " + row.hour + "l" + l + "m" + m + "n" + n +"o" + o )
+    console.log(
+      'redukcijaNaVlezenPritisok: ' +
+        redukcijaNaVlezenPritisok +
+        'pressureDependentFlow: ' +
+        pressureDependentFlow +
+        'pressureIndependentFlow' +
+        pressureIndependentFlow +
+        'kFaktorST' +
+        kFaktorST
+    )
+    console.log(
+      'nov: ' + nov + 'row: ' + row.hour + 'l' + l + 'm' + m + 'n' + n + 'o' + o
+    )
 
-    console.log("reduciran " + reduciranVlezen)
+    console.log('reduciran ' + reduciranVlezen)
   } while (Math.abs(star - nov) >= 0.0001)
 
   return nov
