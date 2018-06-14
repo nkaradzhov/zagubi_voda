@@ -10,9 +10,9 @@ import './Page2.css'
 
 const BigTd = ({ ...rest }) => <td className="big" colSpan={5} {...rest} />
 const SmallTd = ({ ...rest }) => <td colSpan={1} {...rest} />
-const Highlighted = ({ children }) => (
+const Highlighted = ({ children, ...rest }) => (
   <Highlight>
-    <SmallTd>{children}</SmallTd>
+    <SmallTd {...rest}>{children}</SmallTd>
   </Highlight>
 )
 
