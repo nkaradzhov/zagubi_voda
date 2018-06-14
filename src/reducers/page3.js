@@ -36,6 +36,17 @@ const getKFaktorKT = row =>
 const getReduciranVlezenPritisok = (row, redukcijaNaVlezenPritisok) =>
   row.vlezen - redukcijaNaVlezenPritisok
 
+const getRekalkulaciqNaVlezniotProtok = (
+  l,
+  pressureDependentFlow,
+  sreden,
+  pressureExponentN1,
+  pressureIndependentFlow
+) => {
+  let m = pressureDependentFlow * Math.pow(l / sreden, pressureExponentN1)
+  return m + pressureIndependentFlow
+}
+
 const getNovSredenPritisok = (
   row,
   redukcijaNaVlezenPritisok,
@@ -43,36 +54,34 @@ const getNovSredenPritisok = (
   pressureIndependentFlow,
   pressureExponentN1,
   kFaktorST,
-  reduciranVlezen
+  reduciranVlezenPritisok
 ) => {
   let star = 0
   let nov = 0
   do {
     star = nov
     let l = star === 0 ? row.sreden - redukcijaNaVlezenPritisok : star
-    let m = pressureDependentFlow * Math.pow(l / row.sreden, pressureExponentN1)
-    let n = m + pressureIndependentFlow
+    let n = getRekalkulaciqNaVlezniotProtok(
+      l,
+      pressureDependentFlow,
+      row.sreden,
+      pressureExponentN1,
+      pressureIndependentFlow
+    )
     let o = kFaktorST * Math.pow(n, 2)
-    nov = reduciranVlezen - o
-    console.log(
-      'redukcijaNaVlezenPritisok: ' +
-        redukcijaNaVlezenPritisok +
-        'pressureDependentFlow: ' +
-        pressureDependentFlow +
-        'pressureIndependentFlow' +
-        pressureIndependentFlow +
-        'kFaktorST' +
-        kFaktorST
-    )
-    console.log(
-      'nov: ' + nov + 'row: ' + row.hour + 'l' + l + 'm' + m + 'n' + n + 'o' + o
-    )
-
-    console.log('reduciran ' + reduciranVlezen)
+    nov = reduciranVlezenPritisok - o
   } while (Math.abs(star - nov) >= 0.0001)
 
   return nov
 }
+
+const getNovKritichenPritisok = (
+  reduciranVlezenPritisok,
+  kFaktorKT,
+  rekalkulaciqNaVlezniotProtok
+) =>
+  reduciranVlezenPritisok -
+  kFaktorKT * Math.pow(rekalkulaciqNaVlezniotProtok, 2)
 
 const redukcijaNaVlezenPritisokSelector = createSelector(
   path(['page3']),
@@ -110,7 +119,7 @@ const page3DataSelector = createSelector(
 
       const kFaktorST = getKFaktorST(row)
       const kFaktorKT = getKFaktorKT(row)
-      const reduciranVlezen = getReduciranVlezenPritisok(
+      const reduciranVlezenPritisok = getReduciranVlezenPritisok(
         row,
         redukcijaNaVlezenPritisok
       )
@@ -122,14 +131,26 @@ const page3DataSelector = createSelector(
         pressureIndependentFlow,
         pressureExponentN1,
         kFaktorST,
-        reduciranVlezen
+        reduciranVlezenPritisok
       )
-      // novSredenPritisok:
+      const rekalkulaciqNaVlezniotProtok = getRekalkulaciqNaVlezniotProtok(
+        row.sreden - redukcijaNaVlezenPritisok,
+        pressureDependentFlow,
+        row.sreden,
+        pressureExponentN1,
+        pressureIndependentFlow
+      )
+      const novKritichenPritisok = getNovKritichenPritisok(
+        reduciranVlezenPritisok,
+        kFaktorKT,
+        rekalkulaciqNaVlezniotProtok
+      )
 
       return {
         ...row,
-        reduciranVlezen,
-        novSredenPritisok
+        reduciranVlezenPritisok,
+        novSredenPritisok,
+        novKritichenPritisok
       }
     })
 )

@@ -3,6 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { selectors, updateAction } from '../reducers/page3'
 import NumberInput from '../components/NumberInput'
+import round from '../util/round'
 
 const Page3 = ({ data, redukcijaNaVlezenPritisok, change }) => (
   <Grid>
@@ -38,8 +39,9 @@ const Page3 = ({ data, redukcijaNaVlezenPritisok, change }) => (
             {data.map((val, i) => (
               <tr key={i}>
                 <td colSpan={1}>{val.hour}</td>
-                <td colSpan={1}>{val.reduciranVlezen}</td>
-                <td colSpan={1}>{val.novSredenPritisok}</td>
+                <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
+                <td colSpan={1}>{round(val.novSredenPritisok)}</td>
+                <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
               </tr>
             ))}
           </tbody>
