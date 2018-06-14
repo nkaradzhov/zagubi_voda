@@ -12,13 +12,13 @@ const Navigation = () => (
     </Navbar.Header>
     <Nav>
       <LinkContainer to="/page1" exact>
-        <NavItem>Page1</NavItem>
+        <NavItem>Мерени податоци</NavItem>
       </LinkContainer>
       <LinkContainer to="/page2" exact>
-        <NavItem>Page2</NavItem>
+        <NavItem>Анализа на загуби на вода</NavItem>
       </LinkContainer>
       <LinkContainer to="/page3" exact>
-        <NavItem>Page3</NavItem>
+        <NavItem>Редуктор со фиксен излез</NavItem>
       </LinkContainer>
     </Nav>
   </Navbar>
