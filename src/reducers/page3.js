@@ -171,7 +171,7 @@ const updateState = (state, { val }) => ({
 })
 
 const defaultState = {
-  redukcijaNaVlezenPritisok: 10
+  redukcijaNaVlezenPritisok: ''
 }
 export default (state = defaultState, action) =>
   action.type === P3_UPDATE ? updateState(state, action) : state
