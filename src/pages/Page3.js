@@ -1,13 +1,28 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { selectors } from '../selectors/Page3Selectors'
+import { selectors, updateAction } from '../reducers/page3'
+import NumberInput from '../components/NumberInput'
 
-const Page3 = ({
-  //ask for any selected data here
-  data
-}) => (
+const Page3 = ({ data, redukcijaNaVlezenPritisok, change }) => (
   <Grid>
+    <Row className="show-grid">
+      <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
+        <table>
+          <tbody>
+            <tr>
+              <td colSpan={4}>Редукција на влезниот притисок</td>
+              <td>
+                <NumberInput
+                  value={redukcijaNaVlezenPritisok}
+                  onChange={change}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Col>
+    </Row>
     <Row className="show-grid">
       <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
         <table>
@@ -35,7 +50,14 @@ const Page3 = ({
 )
 
 const mstp = state => ({
-  data: selectors.page3DataSelector(state)
+  data: selectors.page3DataSelector(state),
+  redukcijaNaVlezenPritisok: selectors.redukcijaNaVlezenPritisokSelector(state)
+})
+const mdtp = dispatch => ({
+  change: val => dispatch(updateAction(val))
 })
 
-export default connect(mstp)(Page3)
+export default connect(
+  mstp,
+  mdtp
+)(Page3)

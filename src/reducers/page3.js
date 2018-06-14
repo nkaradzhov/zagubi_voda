@@ -1,11 +1,7 @@
-import { path, assocPath } from 'ramda'
+import { path } from 'ramda'
 import { createSelector } from 'reselect'
 import { selectors as selectors1 } from '../reducers/page1'
 import { selectors as selectors2 } from '../reducers/page2'
-
-const defaultState = {
-  redukcijaNaVlezenPritisok: 7
-}
 
 const getPressureDependentFlow = (
   pressureIndependentFlowAtMNF,
@@ -72,13 +68,18 @@ const getNovSredenPritisok = (
   }
 }
 
+const redukcijaNaVlezenPritisokSelector = createSelector(
+  path(['page3']),
+  state => state.redukcijaNaVlezenPritisok
+)
+
 const page3DataSelector = createSelector(
   [
     selectors2.pressureIndependentFlowAtMNFSelector,
     selectors1.minRowSelector,
     path(['page1']),
     path(['page2', 'pressureExponentN1']),
-    path(['page3', 'redukcijaNaVlezenPritisok'])
+    redukcijaNaVlezenPritisokSelector
   ],
   (
     pressureIndependentFlowAtMNF,
@@ -103,11 +104,14 @@ const page3DataSelector = createSelector(
 
       const kFaktorST = getKFaktorST(row)
       const kFaktorKT = getKFaktorKT(row)
-      const reduciranVlezen = getReduciranVlezenPritisok(row, 7)
+      const reduciranVlezen = getReduciranVlezenPritisok(
+        row,
+        redukcijaNaVlezenPritisok
+      )
 
       const novSredenPritisok = getNovSredenPritisok(
         row,
-        7,
+        redukcijaNaVlezenPritisok,
         pressureDependentFlow,
         pressureIndependentFlow,
         pressureExponentN1,
@@ -125,17 +129,22 @@ const page3DataSelector = createSelector(
 )
 
 export const selectors = {
+  redukcijaNaVlezenPritisokSelector,
   page3DataSelector
 }
 
 const P3_UPDATE = 'P3_UPDATE'
-export const updateAction = (key, val) => ({
+export const updateAction = val => ({
   type: P3_UPDATE,
-  key,
   val
 })
 
-const updateState = (state, { key, val }) => assocPath([key], val, state)
+const updateState = (state, { val }) => ({
+  redukcijaNaVlezenPritisok: val
+})
 
+const defaultState = {
+  redukcijaNaVlezenPritisok: 10
+}
 export default (state = defaultState, action) =>
   action.type === P3_UPDATE ? updateState(state, action) : state
