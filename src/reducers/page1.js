@@ -1,30 +1,12 @@
-import { assocPath } from 'ramda'
+import { path, assocPath } from 'ramda'
 import { createSelector } from 'reselect'
 
 const defaultState = {
-  0: {
-    hour: '0-1',
-    vlezen: 43.9,
-    sreden: 43.04,
-    kritichen: 25.8,
-    protok: 182.664
-  },
-  1: {
-    hour: '1-2',
-    vlezen: 44.2,
-    sreden: 43.78,
-    kritichen: 32.2,
-    protok: 143.892
-  },
+  0: { hour: '0-1', vlezen: '', sreden: '', kritichen: '', protok: '' },
+  1: { hour: '1-2', vlezen: '', sreden: '', kritichen: '', protok: '' },
   2: { hour: '2-3', vlezen: '', sreden: '', kritichen: '', protok: '' },
   3: { hour: '3-4', vlezen: '', sreden: '', kritichen: '', protok: '' },
-  4: {
-    hour: '4-5',
-    vlezen: 44.3,
-    sreden: 43.43,
-    kritichen: 41.1,
-    protok: 111.024
-  },
+  4: { hour: '4-5', vlezen: '', sreden: '', kritichen: '', protok: '' },
   5: { hour: '5-6', vlezen: '', sreden: '', kritichen: '', protok: '' },
   6: { hour: '6-7', vlezen: '', sreden: '', kritichen: '', protok: '' },
   7: { hour: '7-8', vlezen: '', sreden: '', kritichen: '', protok: '' },
@@ -46,18 +28,17 @@ const defaultState = {
   23: { hour: '23-24', vlezen: '', sreden: '', kritichen: '', protok: '' }
 }
 
-const minRowSelector = state => {
+const minRowSelector = createSelector(path(['page1']), page1 => {
   let min = null
-  for (let key of Object.keys(state.page1)) {
-    const row = state.page1[key]
-    const protok = parseInt(row.protok, 10)
+  for (let row of Object.values(page1)) {
+    const protok = parseFloat(row.protok, 10)
     if (!isNaN(protok)) {
       if (!min) min = row
-      if (parseInt(min.protok, 10) > protok) min = row
+      if (parseFloat(min.protok, 10) > protok) min = row
     }
   }
   return min
-}
+})
 
 const minRowHourSelector = createSelector(
   minRowSelector,
