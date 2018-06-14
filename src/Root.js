@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Navigation from './components/Navigation'
-import { HashRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route, Redirect } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 
@@ -15,7 +15,7 @@ class Root extends Component {
         <Router>
           <div>
             <Navigation />
-            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/" render={() => <Redirect to="/page1" />} />
             <Route path="/page1" component={Page1} />
             <Route path="/page2" component={Page2} />
             <Route path="/page3" component={Page3} />
