@@ -45,27 +45,22 @@ const getNovSredenPritisok = (
   kFaktorST,
   reduciranVlezen
 ) => {
-  let l = row.sreden - redukcijaNaVlezenPritisok
-  let m = pressureDependentFlow * Math.pow(l / row.sreden, pressureExponentN1)
-  let n = m + pressureIndependentFlow
-  let o = kFaktorST * Math.pow(n, 2)
-  let nov = reduciranVlezen - o
-  console.log(nov)
-  console.log(reduciranVlezen)
-  // if (redukcijaNaVlezenPritisok != nov) {
-  if (Math.abs(redukcijaNaVlezenPritisok - nov) >= 0.0001) {
-    return getNovSredenPritisok(
-      row,
-      nov,
-      pressureDependentFlow,
-      pressureIndependentFlow,
-      pressureExponentN1,
-      kFaktorST,
-      reduciranVlezen
-    )
-  } else {
-    return nov
-  }
+  let star = 0
+  let nov = 0
+  do {
+    star = nov
+    let l = star === 0 ? row.sreden - redukcijaNaVlezenPritisok : star
+    let m = pressureDependentFlow * Math.pow(l / row.sreden, pressureExponentN1)
+    let n = m + pressureIndependentFlow
+    let o = kFaktorST * Math.pow(n, 2)
+    nov = reduciranVlezen - o
+    console.log("redukcijaNaVlezenPritisok: " + redukcijaNaVlezenPritisok + "pressureDependentFlow: " + pressureDependentFlow + "pressureIndependentFlow" + pressureIndependentFlow + "kFaktorST" + kFaktorST )
+    console.log("nov: " + nov + "row: " + row.hour + "l" + l + "m" + m + "n" + n +"o" + o )
+
+    console.log("reduciran " + reduciranVlezen)
+  } while (Math.abs(star - nov) >= 0.0001)
+
+  return nov
 }
 
 const redukcijaNaVlezenPritisokSelector = createSelector(
