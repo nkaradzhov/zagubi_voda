@@ -3,13 +3,13 @@ import { createSelector } from 'reselect'
 import { selectors as selectors1 } from './page1'
 
 const defaultState = {
-  lengthOfMains: 33,
-  numberOfConnections: 3450,
-  numberOfProperties: 4150,
+  lengthOfMains: '',
+  numberOfConnections: '',
+  numberOfProperties: '',
   domesticNightUsePerPerson: 2,
-  numberOfSmallNonDomesticUsers: 0,
-  averageUseOfSmallNonDomesticUsers: 0,
-  useByLargeNonDomesticUsers: 0,
+  numberOfSmallNonDomesticUsers: '',
+  averageUseOfSmallNonDomesticUsers: '',
+  useByLargeNonDomesticUsers: '',
   backgroundLossesFromMains: 40,
   backgroundLossesFromConnections: 3,
   backgroundLossesFromProperties: 1,
