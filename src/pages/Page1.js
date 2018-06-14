@@ -65,29 +65,27 @@ const Page1 = ({
             </tr>
           </thead>
           <tbody>
-            {Object.keys(data).map(
-              key =>
-                data[key].hour === minRowHour ? (
-                  <Highlight key={key}>
-                    <Tr
-                      obj={data[key]}
-                      onVlezenChange={setVlezen(key)}
-                      onSredenChange={setSreden(key)}
-                      onKritichenChange={setKritichen(key)}
-                      onProtokChange={setProtok(key)}
-                    />
-                  </Highlight>
-                ) : (
-                  <Tr
-                    obj={data[key]}
-                    key={key}
-                    onVlezenChange={setVlezen(key)}
-                    onSredenChange={setSreden(key)}
-                    onKritichenChange={setKritichen(key)}
-                    onProtokChange={setProtok(key)}
-                  />
-                )
-            )}
+            {Object.keys(data).map(key => (
+              // data[key].hour === minRowHour ? (
+              //   <Highlight key={key}>
+              //     <Tr
+              //       obj={data[key]}
+              //       onVlezenChange={setVlezen(key)}
+              //       onSredenChange={setSreden(key)}
+              //       onKritichenChange={setKritichen(key)}
+              //       onProtokChange={setProtok(key)}
+              //     />
+              //   </Highlight>
+              // ) :
+              <Tr
+                obj={data[key]}
+                key={key}
+                onVlezenChange={setVlezen(key)}
+                onSredenChange={setSreden(key)}
+                onKritichenChange={setKritichen(key)}
+                onProtokChange={setProtok(key)}
+              />
+            ))}
             <tr>
               <td colSpan="4">
                 Минималната ноќна потрошувачка (измерена), m3/h
