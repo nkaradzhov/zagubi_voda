@@ -83,10 +83,20 @@ const expectedNumberOfEquivalentServicePipeBurstsSelector = createSelector(
     unaccountedLeakageForNightFlow,
     standardEquivalentServicePipeBurstAt50mPressure,
     averageZoneNightPressure
-  ) =>
-    unaccountedLeakageForNightFlow /
-    (standardEquivalentServicePipeBurstAt50mPressure *
-      Math.pow(averageZoneNightPressure / 50, 1.5))
+  ) => {
+    const averageZoneNightPressureNumber = Number(averageZoneNightPressure)
+    if (
+      unaccountedLeakageForNightFlow === 0 ||
+      averageZoneNightPressureNumber === 0 ||
+      standardEquivalentServicePipeBurstAt50mPressure === 0
+    )
+      return 0
+    return (
+      unaccountedLeakageForNightFlow /
+      (standardEquivalentServicePipeBurstAt50mPressure *
+        Math.pow(averageZoneNightPressureNumber / 50, 1.5))
+    )
+  }
 )
 
 const pressureIndependentFlowAtMNFSelector = createSelector(
