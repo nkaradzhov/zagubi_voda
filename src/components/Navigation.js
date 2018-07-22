@@ -8,7 +8,7 @@ const Navigation = () => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <Link to="/page1">Logo</Link>
+        <Link to="/page1">Watersave</Link>
       </Navbar.Brand>
     </Navbar.Header>
     <Nav>
