@@ -1,70 +1,47 @@
 import React, { Component } from 'react'
-import { Button, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { getAll, del } from '../util/HistoryService'
-import styled from 'styled-components'
-import moment from 'moment'
 import { connect } from 'react-redux'
-
-const ListItem = ({ item, onLoad, onDelete }) => (
-  <ListGroupItem key={item.time}>
-    {item.name}
-    {moment(item.time).fromNow()}
-    <Button bsStyle="primary" onClick={() => onLoad(item)}>
-      Load
-    </Button>
-    <Button bsStyle="danger" onClick={() => onDelete(item)}>
-      <Glyphicon glyph="trash" />
-    </Button>
-  </ListGroupItem>
-)
+import HistoryItem from '../components/history/HistoryItem'
+import styled from 'styled-components'
 
 class History extends Component {
   state = {
     history: []
   }
 
-  refresh = () => {
-    console.log('refresh...')
-    this.setState({ history: getAll() })
-  }
+  getHistory = () => this.setState({ history: getAll() })
 
   componentDidMount() {
-    this.refresh()
-    window.addEventListener('localstorage', this.refresh, false)
+    this.getHistory()
+    window.addEventListener('localstorage', this.getHistory, false)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('localstorage', this.refresh)
+    window.removeEventListener('localstorage', this.getHistory)
   }
 
-  load = item => this.props.loadState(item.payload)
-  del = item => {
-    console.log('deleting', item.time)
-    del(item.time)
+  load = item => {
+    this.props.loadState(item.payload)
+    this.props.history.push('/page1')
   }
+  del = item => del(item.time)
 
-  render = () => (
-    <Container>
-      <ListGroup style={{ width: '50vw', height: '50vh', overflow: 'scroll' }}>
+  render = () =>
+    this.state.history.length ? (
+      <List>
         {this.state.history.map(item => (
-          <ListItem
+          <HistoryItem
             key={item.time}
             item={item}
             onLoad={this.load}
             onDelete={this.del}
           />
         ))}
-      </ListGroup>
-    </Container>
-  )
+      </List>
+    ) : (
+      <Empty />
+    )
 }
-
-const Container = styled.div`
-  height: 100%
-  display: flex
-  align-items: center
-  justify-content: center
-`
 
 const mdtp = dispatch => ({
   loadState: payload =>
@@ -78,3 +55,22 @@ export default connect(
   null,
   mdtp
 )(History)
+
+const Empty = () => (
+  <Container>
+    <h2>No history.</h2>
+  </Container>
+)
+
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const List = styled.ul`
+  width: 50vw;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+`

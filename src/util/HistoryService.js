@@ -1,6 +1,7 @@
 const key = 'zagubi_voda_key'
 
-export const getAll = () => JSON.parse(localStorage.getItem(key) || '[]')
+export const getAll = () =>
+  JSON.parse(localStorage.getItem(key) || '[]').sort((a, b) => b.time - a.time)
 
 const set = obj => {
   localStorage.setItem(key, JSON.stringify(obj))

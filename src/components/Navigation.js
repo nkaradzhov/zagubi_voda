@@ -25,9 +25,9 @@ const Navigation = () => (
         <NavItem>History</NavItem>
       </LinkContainer>
     </Nav>
-    <Nav pullRight>
+    <Navbar.Form pullRight>
       <SaveState />
-    </Nav>
+    </Navbar.Form>
   </Navbar>
 )
 

@@ -25,9 +25,15 @@ class Save extends Component {
 
   renderModal = () => (
     <div className="static-modal">
-      <Modal.Dialog>
-        <Modal.Header>
-          <Modal.Title>Save</Modal.Title>
+      <Modal keyboard show onHide={this.reset}>
+        <Modal.Header
+          style={{
+            textAlign: 'center',
+            borderBottom: 'none'
+          }}
+          closeButton
+        >
+          <Modal.Title>Save Current Work</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -41,7 +47,7 @@ class Save extends Component {
           </form>
         </Modal.Body>
 
-        <Modal.Footer>
+        <Modal.Footer style={{ textAlign: 'center', borderTop: 'none' }}>
           <Button onClick={this.reset}>Cancel</Button>
           <Button
             disabled={!this.isSaveEnabled()}
@@ -51,14 +57,16 @@ class Save extends Component {
             Save
           </Button>
         </Modal.Footer>
-      </Modal.Dialog>
+      </Modal>
     </div>
   )
 
   render = () => (
     <Fragment>
       {this.state.modal && this.renderModal()}
-      <Button onClick={this.showModal}>Save</Button>
+      <Button bsStyle="primary" onClick={this.showModal}>
+        Save Current Work
+      </Button>
     </Fragment>
   )
 }
