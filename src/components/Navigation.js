@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import SaveState from './history/Save'
 
 const Navigation = () => (
   <Navbar>
@@ -20,6 +21,12 @@ const Navigation = () => (
       <LinkContainer to="/page3" exact>
         <NavItem>Редуктор со фиксен излез</NavItem>
       </LinkContainer>
+      <LinkContainer to="/history" exact>
+        <NavItem>History</NavItem>
+      </LinkContainer>
+    </Nav>
+    <Nav pullRight>
+      <SaveState />
     </Nav>
   </Navbar>
 )

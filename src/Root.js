@@ -7,6 +7,7 @@ import store from './store'
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
 import Page3 from './pages/Page3'
+import History from './pages/History'
 
 class Root extends Component {
   render() {
@@ -19,6 +20,7 @@ class Root extends Component {
             <Route path="/page1" component={Page1} />
             <Route path="/page2" component={Page2} />
             <Route path="/page3" component={Page3} />
+            <Route path="/history" component={History} />
           </div>
         </Router>
       </Provider>
