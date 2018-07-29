@@ -5,7 +5,13 @@ import { selectors, updateAction } from '../reducers/page3'
 import NumberInput from '../components/NumberInput'
 import round from '../util/round'
 
-const Page3 = ({ data, redukcijaNaVlezenPritisok, change }) => (
+const Page3 = ({
+  data,
+  redukcijaNaVlezenPritisok,
+  zashtedaVodaM3,
+  zashtedaVodaPercent,
+  change
+}) => (
   <Grid>
     <Row className="show-grid">
       <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
@@ -48,12 +54,30 @@ const Page3 = ({ data, redukcijaNaVlezenPritisok, change }) => (
         </table>
       </Col>
     </Row>
+    <Row className="show-grid">
+      <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
+        <table>
+          <tbody>
+            <tr>
+              <td>Заштеда на вода ( m3/ден )</td>
+              <td>{zashtedaVodaM3}</td>
+            </tr>
+            <tr>
+              <td>Заштеда на вода ( % )</td>
+              <td>{zashtedaVodaPercent}</td>
+            </tr>
+          </tbody>
+        </table>
+      </Col>
+    </Row>
   </Grid>
 )
 
 const mstp = state => ({
   data: selectors.page3DataSelector(state),
-  redukcijaNaVlezenPritisok: selectors.redukcijaNaVlezenPritisokSelector(state)
+  redukcijaNaVlezenPritisok: selectors.redukcijaNaVlezenPritisokSelector(state),
+  zashtedaVodaM3: selectors.zashtedaVodaM3Selector(state),
+  zashtedaVodaPercent: selectors.zashtedaVodaPercent(state)
 })
 const mdtp = dispatch => ({
   change: val => dispatch(updateAction(val))
