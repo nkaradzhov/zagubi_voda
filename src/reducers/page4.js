@@ -34,8 +34,8 @@ const getKFaktorST = row => (row.vlezen - row.sreden) / Math.pow(row.protok, 2)
 const getKFaktorKT = row =>
   (row.vlezen - row.kritichen) / Math.pow(row.protok, 2)
 
-const getReduciranVlezenPritisok = (row, redukcijaNaVlezenPritisok) =>
-  row.vlezen - redukcijaNaVlezenPritisok
+const getReduciranVlezenPritisok = row =>
+  row.vlezen - row.redukcijaNaVlezenPritisok
 
 const getRekalkulaciqNaVlezniotProtok = (
   l,
@@ -50,23 +50,17 @@ const getRekalkulaciqNaVlezniotProtok = (
 
 const getNovSredenPritisok = (
   row,
-  redukcijaNaVlezenPritisok,
   pressureDependentFlow,
   pressureIndependentFlow,
   pressureExponentN1,
   kFaktorST,
   reduciranVlezenPritisok
 ) => {
-  if (row.hour === '1-2') {
-    console.log('hi')
-  }
   let star = 0
   let nov = 0
   do {
     star = nov
-    let l = star === 0 ? row.sreden - redukcijaNaVlezenPritisok : star
-    if (l === -Infinity)
-      console.log('ee', star, row.sreden, redukcijaNaVlezenPritisok)
+    let l = star === 0 ? row.sreden - row.redukcijaNaVlezenPritisok : star
     let n = getRekalkulaciqNaVlezniotProtok(
       l,
       pressureDependentFlow,
@@ -89,26 +83,14 @@ const getNovKritichenPritisok = (
   reduciranVlezenPritisok -
   kFaktorKT * Math.pow(rekalkulaciqNaVlezniotProtok, 2)
 
-const redukcijaNaVlezenPritisokSelector = createSelector(
-  path(['page3']),
-  state => state.redukcijaNaVlezenPritisok
-)
-
 const page3DataSelector = createSelector(
   [
     selectors2.pressureIndependentFlowAtMNFSelector,
     selectors1.minRowSelector,
     path(['page1']),
-    path(['page2', 'pressureExponentN1']),
-    redukcijaNaVlezenPritisokSelector
+    path(['page2', 'pressureExponentN1'])
   ],
-  (
-    pressureIndependentFlowAtMNF,
-    minRow,
-    page1,
-    pressureExponentN1,
-    redukcijaNaVlezenPritisok
-  ) =>
+  (pressureIndependentFlowAtMNF, minRow, page1, pressureExponentN1) =>
     Object.values(page1).map(row => {
       const pressureDependentFlow = getPressureDependentFlow(
         pressureIndependentFlowAtMNF,
@@ -125,14 +107,10 @@ const page3DataSelector = createSelector(
 
       const kFaktorST = getKFaktorST(row)
       const kFaktorKT = getKFaktorKT(row)
-      const reduciranVlezenPritisok = getReduciranVlezenPritisok(
-        row,
-        redukcijaNaVlezenPritisok
-      )
+      const reduciranVlezenPritisok = getReduciranVlezenPritisok(row)
 
       const novSredenPritisok = getNovSredenPritisok(
         row,
-        redukcijaNaVlezenPritisok,
         pressureDependentFlow,
         pressureIndependentFlow,
         pressureExponentN1,
@@ -140,7 +118,7 @@ const page3DataSelector = createSelector(
         reduciranVlezenPritisok
       )
       const rekalkulaciqNaVlezniotProtok = getRekalkulaciqNaVlezniotProtok(
-        row.sreden - redukcijaNaVlezenPritisok,
+        row.sreden - row.redukcijaNaVlezenPritisok,
         pressureDependentFlow,
         row.sreden,
         pressureExponentN1,
@@ -186,24 +164,7 @@ const zashtedaVodaPercent = createSelector(
 )
 
 export const selectors = {
-  redukcijaNaVlezenPritisokSelector,
   page3DataSelector,
   zashtedaVodaM3Selector,
   zashtedaVodaPercent
 }
-
-const P3_UPDATE = 'P3_UPDATE'
-export const updateAction = val => ({
-  type: P3_UPDATE,
-  val
-})
-
-const updateState = (state, { val }) => ({
-  redukcijaNaVlezenPritisok: val
-})
-
-const defaultState = {
-  redukcijaNaVlezenPritisok: ''
-}
-export default (state = defaultState, action) =>
-  action.type === P3_UPDATE ? updateState(state, action) : state

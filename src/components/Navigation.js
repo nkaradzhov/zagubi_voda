@@ -21,6 +21,9 @@ const Navigation = () => (
       <LinkContainer to="/page3" exact>
         <NavItem>Редуктор со фиксен излез</NavItem>
       </LinkContainer>
+      <LinkContainer to="/page4" exact>
+        <NavItem>Редуктор модулиран на база на временски интервали</NavItem>
+      </LinkContainer>
       <LinkContainer to="/history" exact>
         <NavItem>History</NavItem>
       </LinkContainer>
