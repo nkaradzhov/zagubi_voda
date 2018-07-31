@@ -4,7 +4,14 @@ import { connect } from 'react-redux'
 import { updateRedukcija } from '../reducers/page1'
 import { selectors } from '../reducers/page4'
 import NumberInput from '../components/NumberInput'
+import PrevNext from '../components/PrevNext'
 import round from '../util/round'
+
+const prev = { to: '/page3', tooltip: 'Сценарио I: Редуктор со фиксен излез' }
+const next = {
+  to: '/page5',
+  tooltip: 'Сценарио III: Редуктор модулиран на база на проток '
+}
 
 const Page4 = ({
   data,
@@ -16,33 +23,35 @@ const Page4 = ({
   <Grid>
     <Row className="show-grid">
       <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
-        <table>
-          <thead>
-            <tr>
-              <th>Час</th>
-              <th>Редукција на влезниот притисок</th>
-              <th>Редуциран влезен притисок</th>
-              <th>Дефиниран среден притисок</th>
-              <th>Нов пресметан критичен притисок</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((val, i) => (
-              <tr key={i}>
-                <td colSpan={1}>{val.hour}</td>
-                <td colSpan={1}>
-                  <NumberInput
-                    value={inputData[i].redukcijaNaVlezenPritisok}
-                    onChange={val => change(i, val)}
-                  />
-                </td>
-                <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
-                <td colSpan={1}>{round(val.novSredenPritisok)}</td>
-                <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+        <PrevNext prev={prev} next={next}>
+          <table>
+            <thead>
+              <tr>
+                <th>Час</th>
+                <th>Редукција на влезниот притисок</th>
+                <th>Редуциран влезен притисок</th>
+                <th>Дефиниран среден притисок</th>
+                <th>Нов пресметан критичен притисок</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((val, i) => (
+                <tr key={i}>
+                  <td colSpan={1}>{val.hour}</td>
+                  <td colSpan={1}>
+                    <NumberInput
+                      value={inputData[i].redukcijaNaVlezenPritisok}
+                      onChange={val => change(i, val)}
+                    />
+                  </td>
+                  <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
+                  <td colSpan={1}>{round(val.novSredenPritisok)}</td>
+                  <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </PrevNext>
       </Col>
     </Row>
     <Row className="show-grid">

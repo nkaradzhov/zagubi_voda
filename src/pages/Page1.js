@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import NumberInput from '../components/NumberInput'
 import Highlight from '../components/Highlight'
+import PrevNext from '../components/PrevNext'
 import { connect } from 'react-redux'
 
 import {
@@ -41,6 +42,8 @@ const Tr = ({
   </tr>
 )
 
+const next = { to: '/page2', tooltip: 'Анализа на загуби на вода' }
+
 const Page1 = ({
   data,
   minRowHour,
@@ -54,56 +57,58 @@ const Page1 = ({
   <Grid>
     <Row className="show-grid">
       <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
-        <table>
-          <thead>
-            <tr>
-              <th>Час</th>
-              <th>Влезен притисок (m)</th>
-              <th>Среден притисок (m)</th>
-              <th>Критичен притисок (m)</th>
-              <th>Влезен проток (m3/h)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(data).map(key => (
-              // data[key].hour === minRowHour ? (
-              //   <Highlight key={key}>
-              //     <Tr
-              //       obj={data[key]}
-              //       onVlezenChange={setVlezen(key)}
-              //       onSredenChange={setSreden(key)}
-              //       onKritichenChange={setKritichen(key)}
-              //       onProtokChange={setProtok(key)}
-              //     />
-              //   </Highlight>
-              // ) :
-              <Tr
-                obj={data[key]}
-                key={key}
-                onVlezenChange={setVlezen(key)}
-                onSredenChange={setSreden(key)}
-                onKritichenChange={setKritichen(key)}
-                onProtokChange={setProtok(key)}
-              />
-            ))}
-            <tr>
-              <td colSpan="4">
-                Минималната ноќна потрошувачка (измерена), m3/h
-              </td>
-              <Highlight>
-                <td className="eho eee">{minProtok}</td>
-              </Highlight>
-            </tr>
-            <tr>
-              <td colSpan="4">
-                Средна вредност на ноќниот притисок во мрежата
-              </td>
-              <Highlight>
-                <td>{minSreden}</td>
-              </Highlight>
-            </tr>
-          </tbody>
-        </table>
+        <PrevNext next={next}>
+          <table>
+            <thead>
+              <tr>
+                <th>Час</th>
+                <th>Влезен притисок (m)</th>
+                <th>Среден притисок (m)</th>
+                <th>Критичен притисок (m)</th>
+                <th>Влезен проток (m3/h)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(data).map(key => (
+                // data[key].hour === minRowHour ? (
+                //   <Highlight key={key}>
+                //     <Tr
+                //       obj={data[key]}
+                //       onVlezenChange={setVlezen(key)}
+                //       onSredenChange={setSreden(key)}
+                //       onKritichenChange={setKritichen(key)}
+                //       onProtokChange={setProtok(key)}
+                //     />
+                //   </Highlight>
+                // ) :
+                <Tr
+                  obj={data[key]}
+                  key={key}
+                  onVlezenChange={setVlezen(key)}
+                  onSredenChange={setSreden(key)}
+                  onKritichenChange={setKritichen(key)}
+                  onProtokChange={setProtok(key)}
+                />
+              ))}
+              <tr>
+                <td colSpan="4">
+                  Минималната ноќна потрошувачка (измерена), m3/h
+                </td>
+                <Highlight>
+                  <td className="eho eee">{minProtok}</td>
+                </Highlight>
+              </tr>
+              <tr>
+                <td colSpan="4">
+                  Средна вредност на ноќниот притисок во мрежата
+                </td>
+                <Highlight>
+                  <td>{minSreden}</td>
+                </Highlight>
+              </tr>
+            </tbody>
+          </table>
+        </PrevNext>
       </Col>
     </Row>
   </Grid>

@@ -57,16 +57,11 @@ const getNovSredenPritisok = (
   kFaktorST,
   reduciranVlezenPritisok
 ) => {
-  if (row.hour === '1-2') {
-    console.log('hi')
-  }
   let star = 0
   let nov = 0
   do {
     star = nov
     let l = star === 0 ? row.sreden - redukcijaNaVlezenPritisok : star
-    if (l === -Infinity)
-      console.log('ee', star, row.sreden, redukcijaNaVlezenPritisok)
     let n = getRekalkulaciqNaVlezniotProtok(
       l,
       pressureDependentFlow,

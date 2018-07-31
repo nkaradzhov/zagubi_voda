@@ -3,7 +3,14 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { selectors, updateAction } from '../reducers/page3'
 import NumberInput from '../components/NumberInput'
+import PrevNext from '../components/PrevNext'
 import round from '../util/round'
+
+const prev = { to: '/page2', tooltip: 'Анализа на загуби на вода' }
+const next = {
+  to: '/page4',
+  tooltip: 'Сценарио II: Редуктор модулиран на база на временски '
+}
 
 const Page3 = ({
   data,
@@ -32,26 +39,28 @@ const Page3 = ({
     </Row>
     <Row className="show-grid">
       <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
-        <table>
-          <thead>
-            <tr>
-              <th>Час</th>
-              <th>Редуциран влезен притисок</th>
-              <th>Дефиниран среден притисок</th>
-              <th>Нов пресметан критичен притисок</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((val, i) => (
-              <tr key={i}>
-                <td colSpan={1}>{val.hour}</td>
-                <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
-                <td colSpan={1}>{round(val.novSredenPritisok)}</td>
-                <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+        <PrevNext prev={prev} next={next}>
+          <table>
+            <thead>
+              <tr>
+                <th>Час</th>
+                <th>Редуциран влезен притисок</th>
+                <th>Дефиниран среден притисок</th>
+                <th>Нов пресметан критичен притисок</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((val, i) => (
+                <tr key={i}>
+                  <td colSpan={1}>{val.hour}</td>
+                  <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
+                  <td colSpan={1}>{round(val.novSredenPritisok)}</td>
+                  <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </PrevNext>
       </Col>
     </Row>
     <Row className="show-grid">
