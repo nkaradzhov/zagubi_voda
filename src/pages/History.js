@@ -3,6 +3,8 @@ import { getAll, del } from '../util/HistoryService'
 import { connect } from 'react-redux'
 import HistoryItem from '../components/history/HistoryItem'
 import styled from 'styled-components'
+import { pageTitles } from '../util/constants'
+import Page from '../components/Page'
 
 class History extends Component {
   state = {
@@ -26,21 +28,24 @@ class History extends Component {
   }
   del = item => del(item.time)
 
-  render = () =>
-    this.state.history.length ? (
-      <List>
-        {this.state.history.map(item => (
-          <HistoryItem
-            key={item.time}
-            item={item}
-            onLoad={this.load}
-            onDelete={this.del}
-          />
-        ))}
-      </List>
-    ) : (
-      <Empty />
-    )
+  render = () => (
+    <Page title={pageTitles.history}>
+      {this.state.history.length ? (
+        <List>
+          {this.state.history.map(item => (
+            <HistoryItem
+              key={item.time}
+              item={item}
+              onLoad={this.load}
+              onDelete={this.del}
+            />
+          ))}
+        </List>
+      ) : (
+        <Empty />
+      )}
+    </Page>
+  )
 }
 
 const mdtp = dispatch => ({

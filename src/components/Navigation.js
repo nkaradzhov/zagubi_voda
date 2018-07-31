@@ -4,50 +4,51 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import HoverDropdown from '../components/HoverDropdown'
 import SaveState from './history/Save'
+import { pageTitles } from '../util/constants'
 
 const Navigation = () => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <Link to="/page1">Watersave</Link>
+        <Link to="/home">Watersave</Link>
       </Navbar.Brand>
     </Navbar.Header>
     <Nav>
       <LinkContainer to="/manual" exact>
-        <NavItem>Корисничко упатство</NavItem>
+        <NavItem>{pageTitles.manual}</NavItem>
       </LinkContainer>
       <HoverDropdown title="Модул 1" id="module1-dropdown">
         <LinkContainer to="/page1" exact>
-          <NavItem>Мерени податоци</NavItem>
+          <NavItem>{pageTitles.page1}</NavItem>
         </LinkContainer>
         <LinkContainer to="/page2" exact>
-          <NavItem>Анализа на загуби на вода</NavItem>
+          <NavItem>{pageTitles.page2}</NavItem>
         </LinkContainer>
       </HoverDropdown>
       <HoverDropdown title="Модул 2" id="module2-dropdown">
         <LinkContainer to="/page3" exact>
-          <NavItem>Редуктор со фиксен излез</NavItem>
+          <NavItem>{pageTitles.page3}</NavItem>
         </LinkContainer>
         <LinkContainer to="/page4" exact>
-          <NavItem>Редуктор модулиран на база на временски интервали</NavItem>
+          <NavItem>{pageTitles.page4}</NavItem>
         </LinkContainer>
         <LinkContainer to="/page5" exact>
-          <NavItem>Сценарио 3</NavItem>
+          <NavItem>{pageTitles.page5}</NavItem>
         </LinkContainer>
       </HoverDropdown>
       <HoverDropdown title="Модул 3" id="module3-dropdown">
         <LinkContainer to="/page6" exact>
-          <NavItem>Потенцијален нето бенефит</NavItem>
+          <NavItem>{pageTitles.page6}</NavItem>
         </LinkContainer>
         <LinkContainer to="/page7" exact>
-          <NavItem>Заштеди со редукција на притисокот</NavItem>
+          <NavItem>{pageTitles.page7}</NavItem>
         </LinkContainer>
       </HoverDropdown>
       <LinkContainer to="/history" exact>
-        <NavItem>Историја</NavItem>
+        <NavItem>{pageTitles.history}</NavItem>
       </LinkContainer>
       <LinkContainer to="/references" exact>
-        <NavItem>Референци</NavItem>
+        <NavItem>{pageTitles.references}</NavItem>
       </LinkContainer>
     </Nav>
     <Navbar.Form pullRight>

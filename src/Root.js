@@ -9,6 +9,8 @@ import Page2 from './pages/Page2'
 import Page3 from './pages/Page3'
 import Page4 from './pages/Page4'
 import History from './pages/History'
+import Home from './pages/Home'
+import Manual from './pages/Manual'
 
 class Root extends Component {
   render() {
@@ -17,7 +19,9 @@ class Root extends Component {
         <Router>
           <div>
             <Navigation />
-            <Route exact path="/" render={() => <Redirect to="/page1" />} />
+            <Route exact path="/" render={() => <Redirect to="/home" />} />
+            <Route path="/home" component={Home} />
+            <Route path="/manual" component={Manual} />
             <Route path="/page1" component={Page1} />
             <Route path="/page2" component={Page2} />
             <Route path="/page3" component={Page3} />

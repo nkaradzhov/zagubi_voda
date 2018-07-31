@@ -6,12 +6,11 @@ import { selectors } from '../reducers/page4'
 import NumberInput from '../components/NumberInput'
 import PrevNext from '../components/PrevNext'
 import round from '../util/round'
+import Page from '../components/Page'
+import { pageTitles } from '../util/constants'
 
-const prev = { to: '/page3', tooltip: 'Сценарио I: Редуктор со фиксен излез' }
-const next = {
-  to: '/page5',
-  tooltip: 'Сценарио III: Редуктор модулиран на база на проток '
-}
+const prev = { to: '/page3', tooltip: pageTitles.page3 }
+const next = { to: '/page5', tooltip: pageTitles.page5 }
 
 const Page4 = ({
   data,
@@ -20,57 +19,59 @@ const Page4 = ({
   change,
   inputData
 }) => (
-  <Grid>
-    <Row className="show-grid">
-      <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
-        <PrevNext prev={prev} next={next}>
-          <table>
-            <thead>
-              <tr>
-                <th>Час</th>
-                <th>Редукција на влезниот притисок</th>
-                <th>Редуциран влезен притисок</th>
-                <th>Дефиниран среден притисок</th>
-                <th>Нов пресметан критичен притисок</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((val, i) => (
-                <tr key={i}>
-                  <td colSpan={1}>{val.hour}</td>
-                  <td colSpan={1}>
-                    <NumberInput
-                      value={inputData[i].redukcijaNaVlezenPritisok}
-                      onChange={val => change(i, val)}
-                    />
-                  </td>
-                  <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
-                  <td colSpan={1}>{round(val.novSredenPritisok)}</td>
-                  <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+  <Page title={pageTitles.page4}>
+    <Grid>
+      <Row className="show-grid">
+        <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
+          <PrevNext prev={prev} next={next}>
+            <table>
+              <thead>
+                <tr>
+                  <th>Час</th>
+                  <th>Редукција на влезниот притисок</th>
+                  <th>Редуциран влезен притисок</th>
+                  <th>Дефиниран среден притисок</th>
+                  <th>Нов пресметан критичен притисок</th>
                 </tr>
-              ))}
+              </thead>
+              <tbody>
+                {data.map((val, i) => (
+                  <tr key={i}>
+                    <td colSpan={1}>{val.hour}</td>
+                    <td colSpan={1}>
+                      <NumberInput
+                        value={inputData[i].redukcijaNaVlezenPritisok}
+                        onChange={val => change(i, val)}
+                      />
+                    </td>
+                    <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
+                    <td colSpan={1}>{round(val.novSredenPritisok)}</td>
+                    <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </PrevNext>
+        </Col>
+      </Row>
+      <Row className="show-grid">
+        <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
+          <table>
+            <tbody>
+              <tr>
+                <td>Заштеда на вода ( m3/ден )</td>
+                <td>{zashtedaVodaM3}</td>
+              </tr>
+              <tr>
+                <td>Заштеда на вода ( % )</td>
+                <td>{zashtedaVodaPercent}</td>
+              </tr>
             </tbody>
           </table>
-        </PrevNext>
-      </Col>
-    </Row>
-    <Row className="show-grid">
-      <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
-        <table>
-          <tbody>
-            <tr>
-              <td>Заштеда на вода ( m3/ден )</td>
-              <td>{zashtedaVodaM3}</td>
-            </tr>
-            <tr>
-              <td>Заштеда на вода ( % )</td>
-              <td>{zashtedaVodaPercent}</td>
-            </tr>
-          </tbody>
-        </table>
-      </Col>
-    </Row>
-  </Grid>
+        </Col>
+      </Row>
+    </Grid>
+  </Page>
 )
 
 const mstp = state => ({
