@@ -71,6 +71,7 @@ const Page2 = ({ data, derived, change }) => (
                   <BigTd>Должина на мрежата, km</BigTd>
                   <SmallTd colSpan={1}>
                     <NumberInput
+                      autoFocus
                       value={data.lengthOfMains}
                       onChange={change('lengthOfMains')}
                     />

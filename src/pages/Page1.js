@@ -26,7 +26,12 @@ const Tr = ({
   <tr {...rest}>
     <td>{obj.hour}</td>
     <td>
-      <NumberInput type="text" value={obj.vlezen} onChange={onVlezenChange} />
+      <NumberInput
+        autoFocus={obj.hour === '0-1'}
+        type="text"
+        value={obj.vlezen}
+        onChange={onVlezenChange}
+      />
     </td>
     <td>
       <NumberInput value={obj.sreden} type="text" onChange={onSredenChange} />

@@ -30,6 +30,7 @@ const Page3 = ({
                   <NumberInput
                     value={redukcijaNaVlezenPritisok}
                     onChange={change}
+                    autoFocus
                   />
                 </td>
               </tr>

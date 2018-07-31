@@ -40,6 +40,7 @@ const Page4 = ({
                     <td colSpan={1}>{val.hour}</td>
                     <td colSpan={1}>
                       <NumberInput
+                        autoFocus={val.hour === '0-1'}
                         value={inputData[i].redukcijaNaVlezenPritisok}
                         onChange={val => change(i, val)}
                       />
