@@ -43,6 +43,7 @@ class Save extends Component {
               value={this.state.name}
               placeholder="name"
               onChange={this.handleNameChange}
+              autoFocus
             />
           </form>
         </Modal.Body>

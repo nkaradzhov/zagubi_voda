@@ -33,3 +33,9 @@ input {
 .highlighted input {
   background-color: lightgoldenrodyellow;
 }
+
+.fade.in.modal {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
