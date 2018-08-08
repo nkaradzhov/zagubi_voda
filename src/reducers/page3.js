@@ -38,12 +38,17 @@ const getReduciranVlezenPritisok = (row, redukcijaNaVlezenPritisok) =>
   row.vlezen - redukcijaNaVlezenPritisok
 
 const getRekalkulaciqNaVlezniotProtok = (
-  l,
-  pressureDependentFlow,
-  sreden,
-  pressureExponentN1,
-  pressureIndependentFlow
+  _l,
+  _pressureDependentFlow,
+  _sreden,
+  _pressureExponentN1,
+  _pressureIndependentFlow
 ) => {
+  const l = _l || 0
+  const pressureDependentFlow = _pressureDependentFlow || 0
+  const sreden = _sreden || 0
+  const pressureExponentN1 = _pressureExponentN1 || 0
+  const pressureIndependentFlow = _pressureIndependentFlow || 0
   let m = pressureDependentFlow * Math.pow(l / sreden, pressureExponentN1)
   return m + pressureIndependentFlow
 }
@@ -177,7 +182,7 @@ const zashtedaVodaM3Selector = createSelector(
 
 const zashtedaVodaPercent = createSelector(
   [sumProtok, sumRekalkulaciq],
-  (a, b) => (a / b - 1) * 100
+  (a, b) => (b === 0 ? 0 : (a / b - 1) * 100)
 )
 
 export const selectors = {
