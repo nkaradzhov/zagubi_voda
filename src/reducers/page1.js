@@ -222,11 +222,24 @@ const minSredenSelector = createSelector(
   row => (row ? row.sreden : '')
 )
 
+const maxVlezenPritisokSelector = createSelector(path(['page1']), page1 => {
+  let max = 0
+  for (let row of Object.values(page1)) {
+    const vlezen = parseFloat(row.vlezen, 10)
+    if (!isNaN(vlezen)) {
+      if (!max) max = vlezen
+      if (max < vlezen) max = vlezen
+    }
+  }
+  return max
+})
+
 export const selectors = {
   minRowSelector,
   minRowHourSelector,
   minProtokSelector,
-  minSredenSelector
+  minSredenSelector,
+  maxVlezenPritisokSelector
 }
 
 const UPDATE_VLEZEN = 'UPDATE_VLEZEN'

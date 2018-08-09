@@ -76,7 +76,7 @@ const Page4 = ({
 )
 
 const mstp = state => ({
-  data: selectors.page3DataSelector(state),
+  data: selectors.page4DataSelector(state),
   zashtedaVodaM3: selectors.zashtedaVodaM3Selector(state),
   zashtedaVodaPercent: selectors.zashtedaVodaPercent(state),
   inputData: state.page1
