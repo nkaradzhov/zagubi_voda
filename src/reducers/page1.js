@@ -264,6 +264,6 @@ const updateState = (state, action) => {
     UPDATE_REDUKCIJA: 'redukcijaNaVlezenPritisok'
   }[action.type]
 
-  return prop ? assocPath([action.key, prop], Number(action.val), state) : state
+  return prop ? assocPath([action.key, prop], action.val, state) : state
 }
 export default (state = defaultState, action) => updateState(state, action)
