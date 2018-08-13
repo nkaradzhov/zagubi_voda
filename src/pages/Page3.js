@@ -70,11 +70,11 @@ const Page3 = ({
             <tbody>
               <tr>
                 <td>Заштеда на вода ( m3/ден )</td>
-                <td>{zashtedaVodaM3}</td>
+                <td>{round(zashtedaVodaM3)}</td>
               </tr>
               <tr>
                 <td>Заштеда на вода ( % )</td>
-                <td>{zashtedaVodaPercent}</td>
+                <td>{round(zashtedaVodaPercent)}</td>
               </tr>
             </tbody>
           </table>
