@@ -58,10 +58,11 @@ const getNovSredenPritisok = (
 ) => {
   let star = 0
   let nov = 0
+  let n = 0
   do {
     star = nov
     let l = star === 0 ? row.sreden - redukcijaNaVlezenPritisok : star
-    let n = getRekalkulaciqNaVlezniotProtok(
+    n = getRekalkulaciqNaVlezniotProtok(
       l,
       pressureDependentFlow,
       row.sreden,
@@ -71,8 +72,7 @@ const getNovSredenPritisok = (
     let o = kFaktorST * Math.pow(n, 2)
     nov = reduciranVlezenPritisok - o
   } while (Math.abs(star - nov) >= 0.0001)
-
-  return nov
+  return [nov, n]
 }
 
 const getNovKritichenPritisok = (
@@ -110,7 +110,10 @@ const calculateReductorData = (
     redukcijaNaVlezenPritisok
   )
 
-  const novSredenPritisok = getNovSredenPritisok(
+  const [
+    novSredenPritisok,
+    rekalkulaciqNaVlezniotProtok
+  ] = getNovSredenPritisok(
     row,
     redukcijaNaVlezenPritisok,
     pressureDependentFlow,
@@ -119,13 +122,7 @@ const calculateReductorData = (
     kFaktorST,
     reduciranVlezenPritisok
   )
-  const rekalkulaciqNaVlezniotProtok = getRekalkulaciqNaVlezniotProtok(
-    row.sreden - redukcijaNaVlezenPritisok,
-    pressureDependentFlow,
-    row.sreden,
-    pressureExponentN1,
-    pressureIndependentFlow
-  )
+
   const novKritichenPritisok = getNovKritichenPritisok(
     reduciranVlezenPritisok,
     kFaktorKT,
