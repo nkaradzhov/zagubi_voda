@@ -97,9 +97,12 @@ const Page2 = ({ data, derived, change }) => (
                 </tr>
                 <tr>
                   <BigTd>Број на население</BigTd>
-                  <Highlighted colSpan={1}>
-                    {round(derived.estimatedPopulation)}
-                  </Highlighted>
+                  <SmallTd colSpan={1}>
+                  <NumberInput
+                    value={data.population}
+                    onChange={change('population')}
+                  />
+                  </SmallTd>
                 </tr>
                 <tr>
                   <BigTd>
@@ -112,9 +115,9 @@ const Page2 = ({ data, derived, change }) => (
                 <tr>
                   <WithTooltip
                     id="1"
-                    tooltip="се добива од мерените вредности на влезен проток во анализиранта зона"
+                    tooltip="Измерената минимална ноќна потрошувачка се добива од мерените вредности на влезен проток во анализираната зона"
                   >
-                    Минималната ноќна потрошувачка (измерена), m3/h
+                    Измерена минимална ноќна потрошувачка, m3/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
                     {round(derived.measuredMinimumZoneNightFlow)}
@@ -122,7 +125,7 @@ const Page2 = ({ data, derived, change }) => (
                 </tr>
                 <tr>
                   <BigTd>
-                    Просечна ноќна потрошувачка на жител л/ лице /час
+                    Просечна ноќна потрошувачка на жител l/лице/h
                   </BigTd>
                   <SmallTd colSpan={1}>
                     <NumberInput
@@ -189,7 +192,7 @@ const Page2 = ({ data, derived, change }) => (
                 <tr>
                   <WithTooltip
                     id="3"
-                    tooltip="Препорачана вредност од IWA при работен притисок од 50 м е од 3 l/ приклучок/h, ±50% (1.5 l/приклучок/h до 4.5 l l/приклучок/h)"
+                    tooltip="Препорачана вредност од IWA при работен притисок од 50 м е од 3 l/приклучок/h, ±50% (1.5 l/приклучок/h до 4.5 l l/приклучок/h)"
                   >
                     Дефекти во позадина на приклучоци, l/приклучок/h
                   </WithTooltip>
@@ -233,10 +236,10 @@ const Page2 = ({ data, derived, change }) => (
                 <tr>
                   <WithTooltip
                     id="6"
-                    tooltip="Препорачана вредност од IWA  е 0.5 l/ приклучок/h, ±15% "
+                    tooltip="Препорачана вредност од IWA е 0.5 l/приклучок/h, ±15% "
                   >
                     Загуба на вода од приклучоците која е независнa од работниот
-                    притисок во мрежата, l/приклучок x h
+                    притисок во мрежата, l/приклучок/h
                   </WithTooltip>
                   <SmallTd colSpan={1}>
                     <NumberInput
@@ -248,10 +251,10 @@ const Page2 = ({ data, derived, change }) => (
                 <tr>
                   <WithTooltip
                     id="7"
-                    tooltip="Препорачана вредност од IWA  е 0.5 l/домаќинство/h , ±50%"
+                    tooltip="Препорачана вредност од IWA е 0.5 l/домаќинство/h , ±50%"
                   >
                     Загуба на вода од домаќинства/имоти која е независнa од
-                    работниот притисок во мрежата, l/имот x h
+                    работниот притисок во мрежата, l/домаќинство/h
                   </WithTooltip>
                   <SmallTd colSpan={1}>
                     <NumberInput
@@ -275,6 +278,11 @@ const Page2 = ({ data, derived, change }) => (
                       )}
                     />
                   </SmallTd>
+                </tr>
+                <tr>
+                  <td colSpan={6}>
+                    3. Пресметани параметри на загуби на вода
+                  </td>
                 </tr>
                 <tr>
                   <WithTooltip
@@ -334,10 +342,9 @@ const Page2 = ({ data, derived, change }) => (
                 <tr>
                   <WithTooltip
                     id="13"
-                    tooltip="Минималната ноќна потрошувачка независни од работниот притисок се одредуваат како збир од легалната ноќна потрошувачка, производот од загуба на вода од приклучоците која е независнa од работниот притисок во мрежата и бројот на приклучоци и производот од загуба на вода од домаќинства/имоти која е независнa од работниот притисок во мрежата и дројот на домаќинства"
+                    tooltip="Минималната ноќна потрошувачка независна од работниот притисок се одредува како збир од 1.легалната ноќна потрошувачка, 2.производот од: загубата на вода од приклучоците која е независнa од работниот притисок во мрежата и бројот на приклучоци и 3.производот од: загубата на вода од домаќинства/имоти која е независнa од работниот притисок во мрежата и бројот на домаќинства"
                   >
-                    Истекување од дефекти независни од работниот притисок во
-                    мрежата, m3/h
+                  Проток независен од работниот притисок во мрежата, m3/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
                     {round(derived.pressureIndependentFlowAtMNF)}
@@ -346,10 +353,9 @@ const Page2 = ({ data, derived, change }) => (
                 <tr>
                   <WithTooltip
                     id="14"
-                    tooltip="Минималната ноќна потрошувачка зависни од работниот притисок се одредуваат со одземање на независната компонента од минималната ноќна потрошувачка"
+                    tooltip="Минималната ноќна потрошувачка зависна од работниот притисок се одредува со одземање на независната компонента од вкупната минималната ноќна потрошувачка"
                   >
-                    Истекување од дефекти зависни од работниот притисок во
-                    мрежата, m3/h
+                    Проток зависен од работниот притисок во мрежата, m3/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
                     {round(derived.pressureDependentFlowAtMNF)}
@@ -367,7 +373,6 @@ const Page2 = ({ data, derived, change }) => (
 const mstp = state => ({
   data: state.page2,
   derived: {
-    estimatedPopulation: selectors.estimatedPopulationSelector(state),
     totalNormalNightUse: selectors.totalNormalNightUseSelector(state),
     measuredMinimumZoneNightFlow: selectors1.minProtokSelector(state),
     averageZoneNightPressure: selectors1.minSredenSelector(state),

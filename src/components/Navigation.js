@@ -17,7 +17,7 @@ const Navigation = () => (
       <LinkContainer to="/manual" exact>
         <NavItem>{pageTitles.manual}</NavItem>
       </LinkContainer>
-      <HoverDropdown title="Модул 1" id="module1-dropdown">
+      <HoverDropdown title="Модул 1 - Параметри на загуби на вода" id="module1-dropdown">
         <LinkContainer to="/page1" exact>
           <NavItem>{pageTitles.page1}</NavItem>
         </LinkContainer>
@@ -25,7 +25,7 @@ const Navigation = () => (
           <NavItem>{pageTitles.page2}</NavItem>
         </LinkContainer>
       </HoverDropdown>
-      <HoverDropdown title="Модул 2" id="module2-dropdown">
+      <HoverDropdown title="Модул 2 - Редуктори" id="module2-dropdown">
         <LinkContainer to="/page3" exact>
           <NavItem>{pageTitles.page3}</NavItem>
         </LinkContainer>
@@ -36,7 +36,7 @@ const Navigation = () => (
           <NavItem>{pageTitles.page5}</NavItem>
         </LinkContainer>
       </HoverDropdown>
-      <HoverDropdown title="Модул 3" id="module3-dropdown">
+      <HoverDropdown title="Модул 3 - Нето сегашна вредност" id="module3-dropdown">
         <LinkContainer to="/page6" exact>
           <NavItem>{pageTitles.page6}</NavItem>
         </LinkContainer>

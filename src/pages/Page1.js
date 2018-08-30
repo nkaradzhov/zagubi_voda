@@ -89,7 +89,7 @@ const Page1 = ({
                 ))}
                 <tr>
                   <td colSpan="4">
-                    Минималната ноќна потрошувачка (измерена), m3/h
+                    Измерена минимална ноќна потрошувачка, m3/h
                   </td>
                   <Highlight>
                     <td className="eho eee">{minProtok}</td>
@@ -101,6 +101,14 @@ const Page1 = ({
                   </td>
                   <Highlight>
                     <td>{minSreden}</td>
+                  </Highlight>
+                </tr>
+                <tr>
+                  <td colSpan="4">
+                  Час на минимална ноќна потрошувачка
+                  </td>
+                  <Highlight>
+                    <td>{minRowHour}</td>
                   </Highlight>
                 </tr>
               </tbody>

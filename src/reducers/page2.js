@@ -6,6 +6,7 @@ const defaultState = {
   lengthOfMains: '',
   numberOfConnections: '',
   numberOfProperties: '',
+  population: '',
   domesticNightUsePerPerson: 2,
   numberOfSmallNonDomesticUsers: '',
   averageUseOfSmallNonDomesticUsers: '',
@@ -19,15 +20,10 @@ const defaultState = {
   standardEquivalentServicePipeBurstAt50mPressure: 1.6
 }
 
-const estimatedPopulationSelector = createSelector(
-  path(['page2', 'numberOfProperties']),
-  n => n * 4
-)
-
 const totalNormalNightUseSelector = createSelector(
   [
     path(['page2', 'domesticNightUsePerPerson']),
-    estimatedPopulationSelector,
+    path(['page2', 'population']),
     path(['page2', 'numberOfSmallNonDomesticUsers']),
     path(['page2', 'averageUseOfSmallNonDomesticUsers']),
     path(['page2', 'useByLargeNonDomesticUsers'])
@@ -126,7 +122,6 @@ const pressureDependentFlowAtMNFSelector = createSelector(
 )
 
 export const selectors = {
-  estimatedPopulationSelector,
   totalNormalNightUseSelector,
   totalBackgroundLeakegeAtActualPressureSelector,
   totalExpectedNightUseSelector,
