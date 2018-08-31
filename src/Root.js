@@ -14,6 +14,7 @@ import Page6 from './pages/Page6'
 import History from './pages/History'
 import Home from './pages/Home'
 import Manual from './pages/Manual'
+import References from './pages/References'
 
 class Root extends Component {
   render() {
@@ -31,6 +32,7 @@ class Root extends Component {
             <Route path="/page4" component={Page4} />
             <Route path="/page5" component={Page5} />
             <Route path="/page6" component={Page6} />
+            <Route path="/references" component={References} />
             // <Route path="/page7" component={Page5} />
             <Route path="/history" component={History} />
           </div>
