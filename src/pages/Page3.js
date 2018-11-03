@@ -58,7 +58,9 @@ const Page3 = ({
                     <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
                     <td colSpan={1}>{round(val.novSredenPritisok)}</td>
                     <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
-                    <td colSpan={1}>{round(val.rekalkulaciqNaVlezniotProtok)}</td>
+                    <td colSpan={1}>
+                      {round(val.rekalkulaciqNaVlezniotProtok)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

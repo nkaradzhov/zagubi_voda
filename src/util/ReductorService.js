@@ -83,7 +83,7 @@ const getNovKritichenPritisok = (
   reduciranVlezenPritisok -
   kFaktorKT * Math.pow(rekalkulaciqNaVlezniotProtok, 2)
 
-const calculateReductorData = (
+export const calculateReductorData = (
   pressureIndependentFlowAtMNF,
   minRow,
   row,
@@ -138,4 +138,27 @@ const calculateReductorData = (
   }
 }
 
-export default calculateReductorData
+export const calculateReductorSummary = data => {
+  let maxReduciranSredenPritisok = Number(data[0].novSredenPritisok || 0)
+  let maxReduciranKritichenPritisok = Number(data[0].novKritichenPritisok || 0)
+  let sumRekalkulaciqNaVlezniotProtok = 0
+
+  for (let row of data) {
+    const sreden = Number(row.novSredenPritisok || 0)
+    if (maxReduciranSredenPritisok < sreden) maxReduciranSredenPritisok = sreden
+
+    const kritichen = Number(row.novKritichenPritisok || 0)
+    if (maxReduciranKritichenPritisok < kritichen)
+      maxReduciranKritichenPritisok = kritichen
+
+    sumRekalkulaciqNaVlezniotProtok += Number(
+      row.rekalkulaciqNaVlezniotProtok || 0
+    )
+  }
+
+  return {
+    maxReduciranSredenPritisok,
+    maxReduciranKritichenPritisok,
+    sumRekalkulaciqNaVlezniotProtok
+  }
+}

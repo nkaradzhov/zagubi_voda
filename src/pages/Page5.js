@@ -63,7 +63,6 @@ const Page5 = ({
                     <td colSpan={1}>
                       {round(val.rekalkulaciqNaVlezniotProtok) || 0}
                     </td>
-
                   </tr>
                 ))}
               </tbody>

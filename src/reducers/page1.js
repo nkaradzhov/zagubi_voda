@@ -246,6 +246,21 @@ const maxSredenPritisokSelector = createSelector(path(['page1']), page1 => {
   return max
 })
 
+const maxKritichenPritisokSelector = createSelector(path(['page1']), page1 => {
+  let max = 0
+  for (let row of Object.values(page1)) {
+    const kritichen = parseFloat(row.kritichen, 10)
+    if (!isNaN(kritichen)) {
+      if (!max) max = kritichen
+      if (max < kritichen) max = kritichen
+    }
+  }
+  return max
+})
+
+const sumVlezenProtokSelector = createSelector(path(['page1']), page1 =>
+  Object.values(page1).reduce((sum, row) => sum + Number(row.protok || 0), 0)
+)
 
 export const selectors = {
   minRowSelector,
@@ -253,7 +268,9 @@ export const selectors = {
   minProtokSelector,
   minSredenSelector,
   maxVlezenPritisokSelector,
-  maxSredenPritisokSelector
+  maxSredenPritisokSelector,
+  maxKritichenPritisokSelector,
+  sumVlezenProtokSelector
 }
 
 const UPDATE_VLEZEN = 'UPDATE_VLEZEN'

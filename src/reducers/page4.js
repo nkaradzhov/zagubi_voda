@@ -3,7 +3,10 @@ import { createSelector } from 'reselect'
 import { selectors as selectors1 } from '../reducers/page1'
 import { selectors as selectors2 } from '../reducers/page2'
 import { subtract } from 'ramda'
-import calculateReductorData from '../util/ReductorService'
+import {
+  calculateReductorData,
+  calculateReductorSummary
+} from '../util/ReductorService'
 
 const page4DataSelector = createSelector(
   [
@@ -47,8 +50,18 @@ const zashtedaVodaPercent = createSelector(
   (a, b) => (b === 0 ? 0 : (a / b - 1) * 100)
 )
 
+const reductorSummarySelector = createSelector(page4DataSelector, data => {
+  const summary = calculateReductorSummary(data)
+  return {
+    maxReduciranSredenPritisok4: summary.maxReduciranSredenPritisok,
+    maxReduciranKritichenPritisok4: summary.maxReduciranKritichenPritisok,
+    sumRekalkulaciqNaVlezniotProtok4: summary.sumRekalkulaciqNaVlezniotProtok
+  }
+})
+
 export const selectors = {
   page4DataSelector,
   zashtedaVodaM3Selector,
-  zashtedaVodaPercent
+  zashtedaVodaPercent,
+  reductorSummarySelector
 }
