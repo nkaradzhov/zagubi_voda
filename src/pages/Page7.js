@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { updateAction, selectors } from '../reducers/page7'
 import { selectors as selectors3 } from '../reducers/page3'
 import { selectors as selectors4 } from '../reducers/page4'
-import { selectors as selectors5 } from '../reducers/page5'
+import { selectors as selectors5 } from '../reducers/page6'
 import Highlight from '../components/Highlight'
 import PrevNext from '../components/PrevNext'
 import Page from '../components/Page'
@@ -48,7 +48,7 @@ const WithTooltip = ({ id, tooltip, children }) => (
   </OverlayTrigger>
 )
 
-const prev = { to: '/page1', tooltip: pageTitles.page1 }
+const prev = { to: '/page6', tooltip: pageTitles.page6 }
 const next = { to: '/page8', tooltip: pageTitles.page8 }
 
 const Page7 = ({ data, derived, change }) => (

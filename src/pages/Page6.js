@@ -1,8 +1,8 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { updateAction } from '../reducers/page5'
-import { selectors } from '../reducers/page5'
+import { updateAction } from '../reducers/page6'
+import { selectors } from '../reducers/page6'
 import NumberInput from '../components/NumberInput'
 import PrevNext from '../components/PrevNext'
 import round from '../util/round'
@@ -12,7 +12,7 @@ import { pageTitles } from '../util/constants'
 const prev = { to: '/page4', tooltip: pageTitles.page4 }
 const next = { to: '/page7', tooltip: pageTitles.page7 }
 
-const Page5 = ({
+const Page6 = ({
   data,
   zashtedaVodaM3,
   zashtedaVodaPercent,
@@ -20,7 +20,7 @@ const Page5 = ({
   inputData,
   dozvolenKritichenPritisok
 }) => (
-  <Page title={pageTitles.page5}>
+  <Page title={pageTitles.page6}>
     <Grid>
       <Row className="show-grid">
         <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
@@ -91,8 +91,8 @@ const Page5 = ({
 )
 
 const mstp = state => ({
-  dozvolenKritichenPritisok: state.page5.dozvolenKritichenPritisok,
-  data: selectors.page5DataSelector(state),
+  dozvolenKritichenPritisok: state.page6.dozvolenKritichenPritisok,
+  data: selectors.page6DataSelector(state),
   zashtedaVodaM3: selectors.zashtedaVodaM3Selector(state),
   zashtedaVodaPercent: selectors.zashtedaVodaPercent(state),
   inputData: state.page1
@@ -104,4 +104,4 @@ const mdtp = dispatch => ({
 export default connect(
   mstp,
   mdtp
-)(Page5)
+)(Page6)

@@ -8,13 +8,13 @@ import {
   calculateReductorSummary
 } from '../util/ReductorService'
 
-const page5DataSelector = createSelector(
+const page6DataSelector = createSelector(
   [
     selectors2.pressureIndependentFlowAtMNFSelector,
     selectors1.minRowSelector,
     path(['page1']),
     path(['page2', 'pressureExponentN1']),
-    path(['page5', 'dozvolenKritichenPritisok']),
+    path(['page6', 'dozvolenKritichenPritisok']),
     selectors1.maxVlezenPritisokSelector
   ],
   (
@@ -54,7 +54,7 @@ const sumProtok = state =>
     0
   )
 
-const sumRekalkulaciq = createSelector(page5DataSelector, data => {
+const sumRekalkulaciq = createSelector(page6DataSelector, data => {
   return data.reduce(
     (sum, current) => sum + Number(current.rekalkulaciqNaVlezniotProtok || 0),
     0
@@ -71,7 +71,7 @@ const zashtedaVodaPercent = createSelector(
   (a, b) => (b === 0 ? 0 : (a / b - 1) * 100)
 )
 
-const reductorSummarySelector = createSelector(page5DataSelector, data => {
+const reductorSummarySelector = createSelector(page6DataSelector, data => {
   const summary = calculateReductorSummary(data)
   return {
     maxReduciranSredenPritisok5: summary.maxReduciranSredenPritisok,
@@ -81,7 +81,7 @@ const reductorSummarySelector = createSelector(page5DataSelector, data => {
 })
 
 export const selectors = {
-  page5DataSelector,
+  page6DataSelector,
   zashtedaVodaM3Selector,
   zashtedaVodaPercent,
   reductorSummarySelector

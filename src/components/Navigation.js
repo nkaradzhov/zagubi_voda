@@ -35,8 +35,8 @@ const Navigation = () => (
         <LinkContainer to="/page4" exact>
           <NavItem>{pageTitles.page4}</NavItem>
         </LinkContainer>
-        <LinkContainer to="/page5" exact>
-          <NavItem>{pageTitles.page5}</NavItem>
+        <LinkContainer to="/page6" exact>
+          <NavItem>{pageTitles.page6}</NavItem>
         </LinkContainer>
       </HoverDropdown>
       <HoverDropdown

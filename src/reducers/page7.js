@@ -3,7 +3,7 @@ import { createSelector } from 'reselect'
 import { selectors as selectors1 } from './page1'
 import { selectors as selectors3 } from './page3'
 import { selectors as selectors4 } from './page4'
-import { selectors as selectors5 } from './page5'
+import { selectors as selectors5 } from './page6'
 const defaultState = {
   yearOfReductor: '',
   annualSiv: '',
@@ -72,7 +72,7 @@ const maxDefiniranSredenPritisok2Selector = createSelector(
 )
 
 const maxDefiniranSredenPritisok3Selector = createSelector(
-  [selectors5.page5DataSelector],
+  [selectors5.page6DataSelector],
   data => {
     let max = 0
     for (let row of Object.values(data)) {
