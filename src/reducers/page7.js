@@ -1,9 +1,9 @@
 import { path, assocPath } from 'ramda'
 import { createSelector } from 'reselect'
 import { selectors as selectors1 } from './page1'
-import { selectors as selectors3 } from './page4'
-import { selectors as selectors4 } from './page5'
-import { selectors as selectors5 } from './page6'
+import { selectors as selectors4 } from './page4'
+import { selectors as selectors5 } from './page5'
+import { selectors as selectors6 } from './page6'
 const defaultState = {
   yearOfReductor: '',
   annualSiv: '',
@@ -42,7 +42,7 @@ const cmargtSelector = createSelector(
 )
 
 const maxDefiniranSredenPritisok1Selector = createSelector(
-  [selectors3.page4DataSelector],
+  [selectors4.page4DataSelector],
   data => {
     let max = 0
     for (let row of Object.values(data)) {
@@ -57,7 +57,7 @@ const maxDefiniranSredenPritisok1Selector = createSelector(
 )
 
 const maxDefiniranSredenPritisok2Selector = createSelector(
-  [selectors4.page5DataSelector],
+  [selectors5.page5DataSelector],
   data => {
     let max = 0
     for (let row of Object.values(data)) {
@@ -72,7 +72,7 @@ const maxDefiniranSredenPritisok2Selector = createSelector(
 )
 
 const maxDefiniranSredenPritisok3Selector = createSelector(
-  [selectors5.page6DataSelector],
+  [selectors6.page6DataSelector],
   data => {
     let max = 0
     for (let row of Object.values(data)) {
@@ -136,7 +136,7 @@ const bfdc3Selector = createSelector(
 
 const eb1fiksenSelector = createSelector(
   [
-    selectors3.zashtedaVodaM3Selector,
+    selectors4.zashtedaVodaM3Selector,
     path(['page7', 'annualSiv']),
     path(['page7', 'yearOfReductor']),
     cmargeSelector,
@@ -213,7 +213,7 @@ const eo2fiksenSelector = createSelector(
     path(['page7', 'apdd']),
     path(['page7', 'qrw']),
     path(['page7', 'qsiv']),
-    selectors3.zashtedaVodaM3Selector,
+    selectors4.zashtedaVodaM3Selector,
     path(['page7', 'annualSiv']),
     path(['page7', 'yearOfReductor']),
     path(['page7', 'pmarg']),
@@ -254,7 +254,7 @@ const npvfiksenSelector = createSelector(
 
 const eb1intervalSelector = createSelector(
   [
-    selectors4.zashtedaVodaM3Selector,
+    selectors5.zashtedaVodaM3Selector,
     path(['page7', 'annualSiv']),
     path(['page7', 'yearOfReductor']),
     cmargeSelector,
@@ -331,7 +331,7 @@ const eo2intervalSelector = createSelector(
     path(['page7', 'apdd']),
     path(['page7', 'qrw']),
     path(['page7', 'qsiv']),
-    selectors4.zashtedaVodaM3Selector,
+    selectors5.zashtedaVodaM3Selector,
     path(['page7', 'annualSiv']),
     path(['page7', 'yearOfReductor']),
     path(['page7', 'pmarg']),
@@ -372,7 +372,7 @@ const npvintervalSelector = createSelector(
 
 const eb1ProtokSelector = createSelector(
   [
-    selectors5.zashtedaVodaM3Selector,
+    selectors6.zashtedaVodaM3Selector,
     path(['page7', 'annualSiv']),
     path(['page7', 'yearOfReductor']),
     cmargeSelector,
@@ -449,7 +449,7 @@ const eo2ProtokSelector = createSelector(
     path(['page7', 'apdd']),
     path(['page7', 'qrw']),
     path(['page7', 'qsiv']),
-    selectors5.zashtedaVodaM3Selector,
+    selectors6.zashtedaVodaM3Selector,
     path(['page7', 'annualSiv']),
     path(['page7', 'yearOfReductor']),
     path(['page7', 'pmarg']),

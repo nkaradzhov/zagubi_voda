@@ -7,10 +7,10 @@ import round from '../util/round'
 import { pageTitles } from '../util/constants'
 
 import { selectors as selectors1 } from '../reducers/page1'
-import { selectors as selectors3 } from '../reducers/page4'
-import { selectors as selectors4 } from '../reducers/page5'
-import { selectors as selectors5 } from '../reducers/page6'
-import { selectors as selectors6 } from '../reducers/page7'
+import { selectors as selectors4 } from '../reducers/page4'
+import { selectors as selectors5 } from '../reducers/page5'
+import { selectors as selectors6 } from '../reducers/page6'
+import { selectors as selectors7 } from '../reducers/page7'
 
 const prev = { to: '/page7', tooltip: pageTitles.page7 }
 
@@ -88,20 +88,20 @@ const mstp = state => ({
     maxKritichenPritisok: selectors1.maxKritichenPritisokSelector(state),
     sumVlezenProtok: selectors1.sumVlezenProtokSelector(state),
 
-    ...selectors3.reductorSummarySelector(state),
-    zashtedaVodaM33: selectors3.zashtedaVodaM3Selector(state),
-    zashtedaVodaPercent3: selectors3.zashtedaVodaPercent(state),
-    npvProtok3: selectors6.npvfiksenSelector(state),
-
     ...selectors4.reductorSummarySelector(state),
-    zashtedaVodaM34: selectors4.zashtedaVodaM3Selector(state),
-    zashtedaVodaPercent4: selectors4.zashtedaVodaPercent(state),
-    npvProtok4: selectors6.npvintervalSelector(state),
+    zashtedaVodaM33: selectors4.zashtedaVodaM3Selector(state),
+    zashtedaVodaPercent3: selectors4.zashtedaVodaPercent(state),
+    npvProtok3: selectors7.npvfiksenSelector(state),
 
     ...selectors5.reductorSummarySelector(state),
-    zashtedaVodaM35: selectors5.zashtedaVodaM3Selector(state),
-    zashtedaVodaPercent5: selectors5.zashtedaVodaPercent(state),
-    npvProtok5: selectors6.npvProtokSelector(state)
+    zashtedaVodaM34: selectors5.zashtedaVodaM3Selector(state),
+    zashtedaVodaPercent4: selectors5.zashtedaVodaPercent(state),
+    npvProtok4: selectors7.npvintervalSelector(state),
+
+    ...selectors6.reductorSummarySelector(state),
+    zashtedaVodaM35: selectors6.zashtedaVodaM3Selector(state),
+    zashtedaVodaPercent5: selectors6.zashtedaVodaPercent(state),
+    npvProtok5: selectors7.npvProtokSelector(state)
   }
 })
 

@@ -10,9 +10,9 @@ import {
 import NumberInput from '../components/NumberInput'
 import { connect } from 'react-redux'
 import { updateAction, selectors } from '../reducers/page7'
-import { selectors as selectors3 } from '../reducers/page4'
-import { selectors as selectors4 } from '../reducers/page5'
-import { selectors as selectors5 } from '../reducers/page6'
+import { selectors as selectors4 } from '../reducers/page4'
+import { selectors as selectors5 } from '../reducers/page5'
+import { selectors as selectors6 } from '../reducers/page6'
 import Highlight from '../components/Highlight'
 import PrevNext from '../components/PrevNext'
 import Page from '../components/Page'
@@ -707,9 +707,9 @@ const mstp = state => ({
     bfdc1: selectors.bfdc1Selector(state),
     bfdc2: selectors.bfdc2Selector(state),
     bfdc3: selectors.bfdc3Selector(state),
-    rsiv1: selectors3.zashtedaVodaM3Selector(state),
-    rsiv2: selectors4.zashtedaVodaM3Selector(state),
-    rsiv3: selectors5.zashtedaVodaM3Selector(state),
+    rsiv1: selectors4.zashtedaVodaM3Selector(state),
+    rsiv2: selectors5.zashtedaVodaM3Selector(state),
+    rsiv3: selectors6.zashtedaVodaM3Selector(state),
     eb1fiksen: selectors.eb1fiksenSelector(state),
     eb2fiksen: selectors.eb2fiksenSelector(state),
     eo1fiksen: selectors.eo1fiksenSelector(state),
