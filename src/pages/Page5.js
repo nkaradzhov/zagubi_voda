@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { updateRedukcija } from '../reducers/page1'
-import { selectors } from '../reducers/page4'
+import { selectors } from '../reducers/page5'
 import NumberInput from '../components/NumberInput'
 import PrevNext from '../components/PrevNext'
 import round from '../util/round'
@@ -12,14 +12,14 @@ import { pageTitles } from '../util/constants'
 const prev = { to: '/page3', tooltip: pageTitles.page3 }
 const next = { to: '/page6', tooltip: pageTitles.page6 }
 
-const Page4 = ({
+const Page5 = ({
   data,
   zashtedaVodaM3,
   zashtedaVodaPercent,
   change,
   inputData
 }) => (
-  <Page title={pageTitles.page4}>
+  <Page title={pageTitles.page5}>
     <Grid>
       <Row className="show-grid">
         <Col lg={8} sm={10} lgOffset={2} smOffset={1}>
@@ -76,7 +76,7 @@ const Page4 = ({
 )
 
 const mstp = state => ({
-  data: selectors.page4DataSelector(state),
+  data: selectors.page5DataSelector(state),
   zashtedaVodaM3: selectors.zashtedaVodaM3Selector(state),
   zashtedaVodaPercent: selectors.zashtedaVodaPercent(state),
   inputData: state.page1
@@ -88,4 +88,4 @@ const mdtp = dispatch => ({
 export default connect(
   mstp,
   mdtp
-)(Page4)
+)(Page5)

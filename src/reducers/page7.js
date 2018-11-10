@@ -2,7 +2,7 @@ import { path, assocPath } from 'ramda'
 import { createSelector } from 'reselect'
 import { selectors as selectors1 } from './page1'
 import { selectors as selectors3 } from './page3'
-import { selectors as selectors4 } from './page4'
+import { selectors as selectors4 } from './page5'
 import { selectors as selectors5 } from './page6'
 const defaultState = {
   yearOfReductor: '',
@@ -57,7 +57,7 @@ const maxDefiniranSredenPritisok1Selector = createSelector(
 )
 
 const maxDefiniranSredenPritisok2Selector = createSelector(
-  [selectors4.page4DataSelector],
+  [selectors4.page5DataSelector],
   data => {
     let max = 0
     for (let row of Object.values(data)) {
