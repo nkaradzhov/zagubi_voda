@@ -10,9 +10,9 @@ import { selectors as selectors1 } from '../reducers/page1'
 import { selectors as selectors3 } from '../reducers/page3'
 import { selectors as selectors4 } from '../reducers/page4'
 import { selectors as selectors5 } from '../reducers/page5'
-import { selectors as selectors6 } from '../reducers/page6'
+import { selectors as selectors6 } from '../reducers/page7'
 
-const prev = { to: '/page6', tooltip: pageTitles.page6 }
+const prev = { to: '/page7', tooltip: pageTitles.page7 }
 
 const Page8 = ({ data }) => (
   <Page title={'Преглед на постигнатите заштеди со редукција на притисокот'}>

@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap'
 import NumberInput from '../components/NumberInput'
 import { connect } from 'react-redux'
-import { updateAction, selectors } from '../reducers/page6'
+import { updateAction, selectors } from '../reducers/page7'
 import { selectors as selectors3 } from '../reducers/page3'
 import { selectors as selectors4 } from '../reducers/page4'
 import { selectors as selectors5 } from '../reducers/page5'
@@ -51,8 +51,8 @@ const WithTooltip = ({ id, tooltip, children }) => (
 const prev = { to: '/page1', tooltip: pageTitles.page1 }
 const next = { to: '/page8', tooltip: pageTitles.page8 }
 
-const Page6 = ({ data, derived, change }) => (
-  <Page title={pageTitles.page6}>
+const Page7 = ({ data, derived, change }) => (
+  <Page title={pageTitles.page7}>
     <Grid>
       <Row>
         <Col lg={10} sm={10} lgOffset={1} smOffset={1}>
@@ -694,7 +694,7 @@ const Page6 = ({ data, derived, change }) => (
 )
 
 const mstp = state => ({
-  data: state.page6,
+  data: state.page7,
   derived: {
     cmarge: selectors.cmargeSelector(state),
     cmargt: selectors.cmargtSelector(state),
@@ -735,4 +735,4 @@ const mdtp = dispatch => ({
 export default connect(
   mstp,
   mdtp
-)(Page6)
+)(Page7)

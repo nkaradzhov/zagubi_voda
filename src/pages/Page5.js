@@ -10,7 +10,7 @@ import Page from '../components/Page'
 import { pageTitles } from '../util/constants'
 
 const prev = { to: '/page4', tooltip: pageTitles.page4 }
-const next = { to: '/page6', tooltip: pageTitles.page6 }
+const next = { to: '/page7', tooltip: pageTitles.page7 }
 
 const Page5 = ({
   data,

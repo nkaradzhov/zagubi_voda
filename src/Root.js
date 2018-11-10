@@ -9,7 +9,7 @@ import Page2 from './pages/Page2'
 import Page3 from './pages/Page3'
 import Page4 from './pages/Page4'
 import Page5 from './pages/Page5'
-import Page6 from './pages/Page6'
+import Page7 from './pages/Page7'
 import Page8 from './pages/Page8'
 import History from './pages/History'
 import Home from './pages/Home'
@@ -32,7 +32,7 @@ class Root extends Component {
             <Route path="/page3" component={Page3} />
             <Route path="/page4" component={Page4} />
             <Route path="/page5" component={Page5} />
-            <Route path="/page6" component={Page6} />
+            <Route path="/page7" component={Page7} />
             <Route path="/page8" component={Page8} />
             <Route path="/newpage" component={Newpage} />
             <Route path="/references" component={References} />

@@ -43,8 +43,8 @@ const Navigation = () => (
         title="Модул 3 - Нето сегашна вредност"
         id="module3-dropdown"
       >
-        <LinkContainer to="/page6" exact>
-          <NavItem>{pageTitles.page6}</NavItem>
+        <LinkContainer to="/page7" exact>
+          <NavItem>{pageTitles.page7}</NavItem>
         </LinkContainer>
         <LinkContainer to="/page8" exact>
           <NavItem>{pageTitles.page8}</NavItem>
