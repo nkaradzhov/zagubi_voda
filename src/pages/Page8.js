@@ -1,14 +1,6 @@
 import React from 'react'
-import {
-  Grid,
-  Row,
-  Col,
-  OverlayTrigger,
-  Tooltip,
-  Glyphicon
-} from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import Highlight from '../components/Highlight'
 import PrevNext from '../components/PrevNext'
 import Page from '../components/Page'
 import round from '../util/round'
@@ -20,38 +12,9 @@ import { selectors as selectors4 } from '../reducers/page4'
 import { selectors as selectors5 } from '../reducers/page5'
 import { selectors as selectors6 } from '../reducers/page6'
 
-const BigTd = ({ ...rest }) => (
-  <td
-    style={{
-      textAlign: 'left',
-      paddingLeft: '0.5em'
-    }}
-    colSpan={5}
-    {...rest}
-  />
-)
-const SmallTd = ({ ...rest }) => <td colSpan={1} {...rest} />
-const Highlighted = ({ children, ...rest }) => (
-  <Highlight>
-    <SmallTd {...rest}>{children}</SmallTd>
-  </Highlight>
-)
-
-const WithTooltip = ({ id, tooltip, children }) => (
-  <OverlayTrigger
-    overlay={<Tooltip id={id}>{tooltip}</Tooltip>}
-    placement="bottom"
-  >
-    <BigTd>
-      {children}
-      <Glyphicon glyph="info-sign" style={{ marginLeft: '1em' }} />
-    </BigTd>
-  </OverlayTrigger>
-)
-
 const prev = { to: '/page6', tooltip: pageTitles.page6 }
 
-const Page7 = ({ data }) => (
+const Page8 = ({ data }) => (
   <Page title={'Преглед на постигнатите заштеди со редукција на притисокот'}>
     <Grid>
       <Row>
@@ -142,4 +105,4 @@ const mstp = state => ({
   }
 })
 
-export default connect(mstp)(Page7)
+export default connect(mstp)(Page8)

@@ -3,7 +3,7 @@ import page2 from './page2'
 import page3 from './page3'
 import page5 from './page5'
 import page6 from './page6'
-//import page7 from './page7'
+//import page8 from './page8'
 
 export default (state = {}, action) => {
   if (action.type === 'LOAD_PERSISTED_STATE') {
