@@ -229,7 +229,7 @@ const eo2fiksenSelector = createSelector(
     pmarg,
     annualInflationRate
   ) =>
-    apdd *
+    (apdd / 100) *
     (qrw / qsiv) *
     zashtedaVoda *
     Math.pow(1 + annualSiv / 100, yearOfReductor) *
@@ -347,7 +347,7 @@ const eo2intervalSelector = createSelector(
     pmarg,
     annualInflationRate
   ) =>
-    apdd *
+    (apdd / 100) *
     (qrw / qsiv) *
     zashtedaVoda *
     Math.pow(1 + annualSiv / 100, yearOfReductor) *
@@ -465,7 +465,7 @@ const eo2ProtokSelector = createSelector(
     pmarg,
     annualInflationRate
   ) =>
-    apdd *
+    (apdd / 100) *
     (qrw / qsiv) *
     zashtedaVoda *
     Math.pow(1 + annualSiv / 100, yearOfReductor) *
