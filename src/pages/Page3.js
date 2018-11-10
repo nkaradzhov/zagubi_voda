@@ -10,7 +10,7 @@ import { pageTitles } from '../util/constants'
 const prev = { to: '/page2', tooltip: pageTitles.page2 }
 const next = { to: '/page4', tooltip: pageTitles.page4 }
 
-const Newpage = () => {
+const Page3 = () => {
   return (
     <Page title={'Преглед на постигнатите заштеди со редукција на притисокот'}>
       <Grid>
@@ -117,4 +117,4 @@ const Newpage = () => {
   )
 }
 
-export default Newpage
+export default Page3

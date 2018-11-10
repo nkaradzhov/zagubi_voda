@@ -47,7 +47,7 @@ const WithTooltip = ({ id, tooltip, children }) => (
 )
 
 const prev = { to: '/page1', tooltip: pageTitles.page1 }
-const next = { to: '/newpage', tooltip: pageTitles.newpage }
+const next = { to: '/page3', tooltip: pageTitles.page3 }
 
 const Page2 = ({ data, derived, change }) => (
   <Page title={pageTitles.page2}>
