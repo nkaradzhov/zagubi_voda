@@ -12,7 +12,11 @@ const next = { to: '/page4', tooltip: pageTitles.page4 }
 
 const Page3 = () => {
   return (
-    <Page title={'Преглед на постигнатите заштеди со редукција на притисокот'}>
+    <Page
+      title={
+        'Одредување на експонентот на притисок N1 со помош на  т.н. Step test'
+      }
+    >
       <Grid>
         <Row>
           <Col lg={10} sm={10} lgOffset={1} smOffset={1}>

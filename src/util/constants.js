@@ -10,5 +10,5 @@ export const pageTitles = {
   page7: 'Потенцијален нето бенефит',
   page8: 'Заштеди со редукција на притисокот',
   references: 'Референци',
-  page3: 'Степ тест'
+  page3: 'Step test'
 }
