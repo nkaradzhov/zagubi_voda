@@ -1,7 +1,7 @@
 import { path, assocPath } from 'ramda'
 import { createSelector } from 'reselect'
 import { selectors as selectors1 } from './page1'
-import { selectors as selectors3 } from './page3'
+import { selectors as selectors3 } from './page4'
 import { selectors as selectors4 } from './page5'
 import { selectors as selectors5 } from './page6'
 const defaultState = {
@@ -42,7 +42,7 @@ const cmargtSelector = createSelector(
 )
 
 const maxDefiniranSredenPritisok1Selector = createSelector(
-  [selectors3.page3DataSelector],
+  [selectors3.page4DataSelector],
   data => {
     let max = 0
     for (let row of Object.values(data)) {

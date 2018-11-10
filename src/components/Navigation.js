@@ -29,8 +29,8 @@ const Navigation = () => (
         </LinkContainer>
       </HoverDropdown>
       <HoverDropdown title="Модул 2 - Редуктори" id="module2-dropdown">
-        <LinkContainer to="/page3" exact>
-          <NavItem>{pageTitles.page3}</NavItem>
+        <LinkContainer to="/page4" exact>
+          <NavItem>{pageTitles.page4}</NavItem>
         </LinkContainer>
         <LinkContainer to="/page5" exact>
           <NavItem>{pageTitles.page5}</NavItem>

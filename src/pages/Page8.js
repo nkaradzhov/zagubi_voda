@@ -7,7 +7,7 @@ import round from '../util/round'
 import { pageTitles } from '../util/constants'
 
 import { selectors as selectors1 } from '../reducers/page1'
-import { selectors as selectors3 } from '../reducers/page3'
+import { selectors as selectors3 } from '../reducers/page4'
 import { selectors as selectors4 } from '../reducers/page5'
 import { selectors as selectors5 } from '../reducers/page6'
 import { selectors as selectors6 } from '../reducers/page7'

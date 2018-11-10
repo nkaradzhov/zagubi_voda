@@ -9,11 +9,11 @@ import {
 } from '../util/ReductorService'
 
 const redukcijaNaVlezenPritisokSelector = path([
-  'page3',
+  'page4',
   'redukcijaNaVlezenPritisok'
 ])
 
-const page3DataSelector = createSelector(
+const page4DataSelector = createSelector(
   [
     selectors2.pressureIndependentFlowAtMNFSelector,
     selectors1.minRowSelector,
@@ -45,7 +45,7 @@ const sumProtok = state =>
     0
   )
 
-const sumRekalkulaciq = createSelector(page3DataSelector, data =>
+const sumRekalkulaciq = createSelector(page4DataSelector, data =>
   data.reduce(
     (sum, current) => sum + Number(current.rekalkulaciqNaVlezniotProtok || 0),
     0
@@ -62,7 +62,7 @@ const zashtedaVodaPercent = createSelector(
   (a, b) => (b === 0 ? 0 : (a / b - 1) * 100)
 )
 
-const reductorSummarySelector = createSelector(page3DataSelector, data => {
+const reductorSummarySelector = createSelector(page4DataSelector, data => {
   const summary = calculateReductorSummary(data)
   return {
     maxReduciranSredenPritisok3: summary.maxReduciranSredenPritisok,
@@ -73,7 +73,7 @@ const reductorSummarySelector = createSelector(page3DataSelector, data => {
 
 export const selectors = {
   redukcijaNaVlezenPritisokSelector,
-  page3DataSelector,
+  page4DataSelector,
   zashtedaVodaM3Selector,
   zashtedaVodaPercent,
   reductorSummarySelector

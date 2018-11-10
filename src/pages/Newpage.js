@@ -8,7 +8,7 @@ import round from '../util/round'
 import { pageTitles } from '../util/constants'
 
 const prev = { to: '/page2', tooltip: pageTitles.page2 }
-const next = { to: '/page3', tooltip: pageTitles.page3 }
+const next = { to: '/page4', tooltip: pageTitles.page4 }
 
 const Newpage = () => {
   return (

@@ -9,7 +9,7 @@ import round from '../util/round'
 import Page from '../components/Page'
 import { pageTitles } from '../util/constants'
 
-const prev = { to: '/page3', tooltip: pageTitles.page3 }
+const prev = { to: '/page4', tooltip: pageTitles.page4 }
 const next = { to: '/page6', tooltip: pageTitles.page6 }
 
 const Page5 = ({
