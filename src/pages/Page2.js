@@ -47,7 +47,7 @@ const WithTooltip = ({ id, tooltip, children }) => (
 )
 
 const prev = { to: '/page1', tooltip: pageTitles.page1 }
-const next = { to: '/page3', tooltip: pageTitles.page3 }
+const next = { to: '/newpage', tooltip: pageTitles.newpage }
 
 const Page2 = ({ data, derived, change }) => (
   <Page title={pageTitles.page2}>
@@ -98,10 +98,10 @@ const Page2 = ({ data, derived, change }) => (
                 <tr>
                   <BigTd>Број на население</BigTd>
                   <SmallTd colSpan={1}>
-                  <NumberInput
-                    value={data.population}
-                    onChange={change('population')}
-                  />
+                    <NumberInput
+                      value={data.population}
+                      onChange={change('population')}
+                    />
                   </SmallTd>
                 </tr>
                 <tr>
@@ -124,9 +124,7 @@ const Page2 = ({ data, derived, change }) => (
                   </Highlighted>
                 </tr>
                 <tr>
-                  <BigTd>
-                    Просечна ноќна потрошувачка на жител l/лице/h
-                  </BigTd>
+                  <BigTd>Просечна ноќна потрошувачка на жител l/лице/h</BigTd>
                   <SmallTd colSpan={1}>
                     <NumberInput
                       value={data.domesticNightUsePerPerson}
@@ -280,9 +278,7 @@ const Page2 = ({ data, derived, change }) => (
                   </SmallTd>
                 </tr>
                 <tr>
-                  <td colSpan={6}>
-                    3. Пресметани параметри на загуби на вода
-                  </td>
+                  <td colSpan={6}>3. Пресметани параметри на загуби на вода</td>
                 </tr>
                 <tr>
                   <WithTooltip
@@ -344,7 +340,7 @@ const Page2 = ({ data, derived, change }) => (
                     id="13"
                     tooltip="Минималната ноќна потрошувачка независна од работниот притисок се одредува како збир од 1.легалната ноќна потрошувачка, 2.производот од: загубата на вода од приклучоците која е независнa од работниот притисок во мрежата и бројот на приклучоци и 3.производот од: загубата на вода од домаќинства/имоти која е независнa од работниот притисок во мрежата и бројот на домаќинства"
                   >
-                  Проток независен од работниот притисок во мрежата, m3/h
+                    Проток независен од работниот притисок во мрежата, m3/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
                     {round(derived.pressureIndependentFlowAtMNF)}
