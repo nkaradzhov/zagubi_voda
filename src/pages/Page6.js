@@ -61,7 +61,7 @@ const Page6 = ({
                     <td colSpan={1}>{val.hour}</td>
                     <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
                     <td colSpan={1}>{round(val.novSredenPritisok)}</td>
-                    <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+                    <td colSpan={1}>{dozvolenKritichenPritisok}</td>
                     <td colSpan={1}>
                       {round(val.rekalkulaciqNaVlezniotProtok) || 0}
                     </td>

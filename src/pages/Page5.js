@@ -28,10 +28,13 @@ const Page5 = ({
               <thead>
                 <tr>
                   <th>Час</th>
-                  <th>Редукција на влезниот притисок</th>
-                  <th>Редуциран влезен притисок</th>
-                  <th>Дефиниран среден притисок</th>
-                  <th>Нов пресметан критичен притисок</th>
+                  <th>Редукција на влезниот притисок, m</th>
+                  <th>Редуциран влезен притисок, m</th>
+                  <th>Редуциран среден притисок, m</th>
+                  <th>Редуциран критичен притисок, m</th>
+                  <th>
+                    Рекалкулиран влезен проток во систем, m<sup>3</sup>/h,{' '}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -48,6 +51,9 @@ const Page5 = ({
                     <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
                     <td colSpan={1}>{round(val.novSredenPritisok)}</td>
                     <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+                    <td colSpan={1}>
+                      {round(val.rekalkulaciqNaVlezniotProtok)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
