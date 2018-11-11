@@ -192,10 +192,9 @@ const eb2fiksenSelector = createSelector(
     bfpr,
     bfdc
   ) =>
-    (((ak * ank) / 100) * bfpr) / 100 +
-    ((((ad * ald) / 100) * bfdc) / 100) *
-      ((aeo / 100) * omeo + (aper / 100) * omper + (avoz / 100) * omvoz) *
-      Math.pow(1 + annualInflationRate / 100, yearOfReductor)
+    ((((ak * ank) / 100) * bfpr) / 100 + (((ad * ald) / 100) * bfdc) / 100) *
+    ((aeo / 100) * omeo + (aper / 100) * omper + (avoz / 100) * omvoz) *
+    Math.pow(1 + annualInflationRate / 100, yearOfReductor)
 )
 
 const eo1fiksenSelector = createSelector(
@@ -229,8 +228,7 @@ const eo2fiksenSelector = createSelector(
     pmarg,
     annualInflationRate
   ) =>
-    (apdd / 100) *
-    (qrw / qsiv) *
+    (((apdd / 100) * qrw) / qsiv) *
     zashtedaVoda *
     Math.pow(1 + annualSiv / 100, yearOfReductor) *
     365 *
@@ -270,11 +268,10 @@ const eb1intervalSelector = createSelector(
     annualInflationRate
   ) =>
     zashtedaVoda *
-    (1 +
-      Math.pow(1 + annualSiv / 100, yearOfReductor) *
-        365 *
-        (cmarge + cmargt) *
-        Math.pow(1 + annualInflationRate / 100, yearOfReductor))
+    Math.pow(1 + annualSiv / 100, yearOfReductor) *
+    365 *
+    (cmarge + cmargt) *
+    Math.pow(1 + annualInflationRate / 100, yearOfReductor)
 )
 
 const eb2intervalSelector = createSelector(
@@ -310,10 +307,9 @@ const eb2intervalSelector = createSelector(
     bfpr,
     bfdc
   ) =>
-    (((ak * ank) / 100) * bfpr) / 100 +
-    ((((ad * ald) / 100) * bfdc) / 100) *
-      ((aeo / 100) * omeo + (aper / 100) * omper + (avoz / 100) * omvoz) *
-      Math.pow(1 + annualInflationRate / 100, yearOfReductor)
+    ((((ak * ank) / 100) * bfpr) / 100 + (((ad * ald) / 100) * bfdc) / 100) *
+    ((aeo / 100) * omeo + (aper / 100) * omper + (avoz / 100) * omvoz) *
+    Math.pow(1 + annualInflationRate / 100, yearOfReductor)
 )
 
 const eo1intervalSelector = createSelector(
@@ -347,8 +343,7 @@ const eo2intervalSelector = createSelector(
     pmarg,
     annualInflationRate
   ) =>
-    (apdd / 100) *
-    (qrw / qsiv) *
+    (((apdd / 100) * qrw) / qsiv) *
     zashtedaVoda *
     Math.pow(1 + annualSiv / 100, yearOfReductor) *
     365 *
@@ -388,11 +383,10 @@ const eb1ProtokSelector = createSelector(
     annualInflationRate
   ) =>
     zashtedaVoda *
-    (1 +
-      Math.pow(1 + annualSiv / 100, yearOfReductor) *
-        365 *
-        (cmarge + cmargt) *
-        Math.pow(1 + annualInflationRate / 100, yearOfReductor))
+    Math.pow(1 + annualSiv / 100, yearOfReductor) *
+    365 *
+    (cmarge + cmargt) *
+    Math.pow(1 + annualInflationRate / 100, yearOfReductor)
 )
 
 const eb2ProtokSelector = createSelector(
@@ -428,10 +422,9 @@ const eb2ProtokSelector = createSelector(
     bfpr,
     bfdc
   ) =>
-    (((ak * ank) / 100) * bfpr) / 100 +
-    ((((ad * ald) / 100) * bfdc) / 100) *
-      ((aeo / 100) * omeo + (aper / 100) * omper + (avoz / 100) * omvoz) *
-      Math.pow(1 + annualInflationRate / 100, yearOfReductor)
+    ((((ak * ank) / 100) * bfpr) / 100 + (((ad * ald) / 100) * bfdc) / 100) *
+    ((aeo / 100) * omeo + (aper / 100) * omper + (avoz / 100) * omvoz) *
+    Math.pow(1 + annualInflationRate / 100, yearOfReductor)
 )
 
 const eo1ProtokSelector = createSelector(
@@ -465,8 +458,7 @@ const eo2ProtokSelector = createSelector(
     pmarg,
     annualInflationRate
   ) =>
-    (apdd / 100) *
-    (qrw / qsiv) *
+    (((apdd / 100) * qrw) / qsiv) *
     zashtedaVoda *
     Math.pow(1 + annualSiv / 100, yearOfReductor) *
     365 *
