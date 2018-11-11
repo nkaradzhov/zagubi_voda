@@ -45,11 +45,13 @@ const sumProtok = state =>
     0
   )
 
-const sumRekalkulaciq = createSelector(page4DataSelector, data =>
-  data.reduce(
-    (sum, current) => sum + Number(current.rekalkulaciqNaVlezniotProtok || 0),
-    0
-  )
+const sumRekalkulaciq = createSelector(
+  page4DataSelector,
+  data =>
+    data.reduce(
+      (sum, current) => sum + Number(current.rekalkulaciqNaVlezniotProtok || 0),
+      0
+    )
 )
 
 const zashtedaVodaM3Selector = createSelector(
@@ -62,14 +64,17 @@ const zashtedaVodaPercent = createSelector(
   (a, b) => (b === 0 ? 0 : (a / b - 1) * 100)
 )
 
-const reductorSummarySelector = createSelector(page4DataSelector, data => {
-  const summary = calculateReductorSummary(data)
-  return {
-    maxReduciranSredenPritisok3: summary.maxReduciranSredenPritisok,
-    maxReduciranKritichenPritisok3: summary.maxReduciranKritichenPritisok,
-    sumRekalkulaciqNaVlezniotProtok3: summary.sumRekalkulaciqNaVlezniotProtok
+const reductorSummarySelector = createSelector(
+  page4DataSelector,
+  data => {
+    const summary = calculateReductorSummary(data)
+    return {
+      maxReduciranSredenPritisok3: summary.maxReduciranSredenPritisok,
+      maxReduciranKritichenPritisok3: summary.maxReduciranKritichenPritisok,
+      sumRekalkulaciqNaVlezniotProtok3: summary.sumRekalkulaciqNaVlezniotProtok
+    }
   }
-})
+)
 
 export const selectors = {
   redukcijaNaVlezenPritisokSelector,
@@ -79,9 +84,9 @@ export const selectors = {
   reductorSummarySelector
 }
 
-const P3_UPDATE = 'P3_UPDATE'
+const P4_UPDATE = 'P4_UPDATE'
 export const updateAction = val => ({
-  type: P3_UPDATE,
+  type: P4_UPDATE,
   val
 })
 
@@ -93,4 +98,4 @@ const defaultState = {
   redukcijaNaVlezenPritisok: ''
 }
 export default (state = defaultState, action) =>
-  action.type === P3_UPDATE ? updateState(state, action) : state
+  action.type === P4_UPDATE ? updateState(state, action) : state

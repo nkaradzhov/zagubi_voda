@@ -509,9 +509,9 @@ export const selectors = {
   npvProtokSelector
 }
 
-const P6_UPDATE = 'P6_UPDATE'
+const P7_UPDATE = 'P7_UPDATE'
 export const updateAction = (key, val) => ({
-  type: P6_UPDATE,
+  type: P7_UPDATE,
   key,
   val
 })
@@ -519,4 +519,4 @@ export const updateAction = (key, val) => ({
 const updateState = (state, { key, val }) => assocPath([key], val, state)
 
 export default (state = defaultState, action) =>
-  action.type === P6_UPDATE ? updateState(state, action) : state
+  action.type === P7_UPDATE ? updateState(state, action) : state
