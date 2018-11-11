@@ -52,10 +52,16 @@ const Page3 = ({ data, derivedData, change }) => {
                     <td />
                     <td />
 
-                    <th>m3/h</th>
+                    <th>
+                      m<sup>3</sup>/h
+                    </th>
                     <th>m</th>
-                    <th>m3/h</th>
-                    <th>m3/h</th>
+                    <th>
+                      m<sup>3</sup>/h
+                    </th>
+                    <th>
+                      m<sup>3</sup>/h
+                    </th>
                     <th>Почеток</th>
                     <th>Фаза 1</th>
                     <th>Фаза 2</th>

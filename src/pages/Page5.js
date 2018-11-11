@@ -60,7 +60,9 @@ const Page5 = ({
           <table>
             <tbody>
               <tr>
-                <td>Заштеда на вода ( m3/ден )</td>
+                <td>
+                  Заштеда на вода ( m<sup>3</sup>/ден )
+                </td>
                 <td>{round(zashtedaVodaM3)}</td>
               </tr>
               <tr>

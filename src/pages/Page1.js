@@ -73,7 +73,9 @@ const Page1 = ({
                   <th>Влезен притисок (m)</th>
                   <th>Среден притисок (m)</th>
                   <th>Критичен притисок (m)</th>
-                  <th>Влезен проток (m3/h)</th>
+                  <th>
+                    Влезен проток (m<sup>3</sup>/h)
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -89,7 +91,7 @@ const Page1 = ({
                 ))}
                 <tr>
                   <td colSpan="4">
-                    Измерена минимална ноќна потрошувачка, m3/h
+                    Измерена минимална ноќна потрошувачка, m<sup>3</sup>/h
                   </td>
                   <Highlight>
                     <td className="eho eee">{minProtok}</td>
@@ -104,9 +106,7 @@ const Page1 = ({
                   </Highlight>
                 </tr>
                 <tr>
-                  <td colSpan="4">
-                  Час на минимална ноќна потрошувачка
-                  </td>
+                  <td colSpan="4">Час на минимална ноќна потрошувачка</td>
                   <Highlight>
                     <td>{minRowHour}</td>
                   </Highlight>

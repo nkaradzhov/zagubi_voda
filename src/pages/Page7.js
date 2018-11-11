@@ -81,7 +81,7 @@ const Page7 = ({ data, derived, change }) => (
                   <BigTd>
                     Р влез – редукција на произведената вода во анализираната
                     зона на потрошувачка при инсталирање на редуктор со фисен
-                    излез, m3/ден
+                    излез, m<sup>3</sup>/ден
                   </BigTd>
                   <Highlighted colSpan={1}>{derived.rsiv1}</Highlighted>
                 </tr>
@@ -89,7 +89,7 @@ const Page7 = ({ data, derived, change }) => (
                   <BigTd>
                     Р влез – редукција на произведената вода во анализираната
                     зона на потрошувачка при инсталирање на редуктор модулиран
-                    на база на временски интервали, m3/ден
+                    на база на временски интервали, m<sup>3</sup>/ден
                   </BigTd>
                   <Highlighted colSpan={1}>{derived.rsiv2}</Highlighted>
                 </tr>
@@ -97,7 +97,7 @@ const Page7 = ({ data, derived, change }) => (
                   <BigTd>
                     Р влез – редукција на произведената вода во анализираната
                     зона на потрошувачка при инсталирање на редуктор модулиран
-                    на база на проток/притисок, m3/ден{' '}
+                    на база на проток/притисок, m<sup>3</sup>/ден{' '}
                   </BigTd>
                   <Highlighted colSpan={1}>{derived.rsiv3}</Highlighted>
                 </tr>
@@ -116,7 +116,7 @@ const Page7 = ({ data, derived, change }) => (
                 <tr>
                   <BigTd>
                     Q влез-годишно количество на влез на вода во анализираната
-                    зона на потрошувачка, m3
+                    зона на потрошувачка, m<sup>3</sup>
                   </BigTd>
                   <SmallTd colSpan={1}>
                     <NumberInput value={data.qsiv} onChange={change('qsiv')} />
@@ -136,7 +136,7 @@ const Page7 = ({ data, derived, change }) => (
                   <WithTooltip id="1" tooltip="Cmarg (E)=OME/Qsiv">
                     Cmarg(Е) – чинење на електричната енергија за сите процеси
                     во водоснабдувањето во анализираната зона на потрошувачка,
-                    мкд/m3
+                    мкд/m<sup>3</sup>
                   </WithTooltip>
                   <Highlighted colSpan={1}>{round(derived.cmarge)}</Highlighted>
                 </tr>
@@ -452,14 +452,16 @@ const Page7 = ({ data, derived, change }) => (
                 <tr>
                   <BigTd>
                     Q фак.потр. – годишен волумен на фактурирана вода во
-                    анализираната зона на потрошувачка, m3
+                    анализираната зона на потрошувачка, m<sup>3</sup>
                   </BigTd>
                   <SmallTd colSpan={1}>
                     <NumberInput value={data.qrw} onChange={change('qrw')} />
                   </SmallTd>
                 </tr>
                 <tr>
-                  <BigTd>Pmarg – маргиналната цена на водата, мкд/m3</BigTd>
+                  <BigTd>
+                    Pmarg – маргиналната цена на водата, мкд/m<sup>3</sup>
+                  </BigTd>
                   <SmallTd colSpan={1}>
                     <NumberInput
                       value={data.pmarg}
