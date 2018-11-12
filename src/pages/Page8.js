@@ -45,7 +45,7 @@ const Page8 = ({ data }) => (
                   <th>Без контрола</th>
                   <td>{round(data.maxSredenPritisok, 2)}</td>
                   <td>{round(data.maxKritichenPritisok, 2)}</td>
-                  <td>{round(data.sumVlezenProtok, 2)}</td>
+                  <td>{round(data.sumVlezenProtok, 3)}</td>
                   <td />
                   <td />
                   <td />
@@ -54,27 +54,27 @@ const Page8 = ({ data }) => (
                   <th>Редуктор со фиксен излез</th>
                   <td>{round(data.maxReduciranSredenPritisok3, 2)}</td>
                   <td>{round(data.maxReduciranKritichenPritisok3, 2)}</td>
-                  <td>{round(data.sumRekalkulaciqNaVlezniotProtok3, 2)}</td>
-                  <td>{round(data.zashtedaVodaM33, 2)}</td>
-                  <td>{round(data.zashtedaVodaPercent3, 2)}</td>
+                  <td>{round(data.sumRekalkulaciqNaVlezniotProtok3, 3)}</td>
+                  <td>{round(data.zashtedaVodaM33, 3)}</td>
+                  <td>{round(data.zashtedaVodaPercent3, 1)}</td>
                   <td>{round(data.npvProtok3, 2)}</td>
                 </tr>
                 <tr>
                   <th>Редуктор модулиран на база на временски интервали</th>
                   <td>{round(data.maxReduciranSredenPritisok4, 2)}</td>
                   <td>{round(data.maxReduciranKritichenPritisok4, 2)}</td>
-                  <td>{round(data.sumRekalkulaciqNaVlezniotProtok4, 2)}</td>
-                  <td>{round(data.zashtedaVodaM34, 2)}</td>
-                  <td>{round(data.zashtedaVodaPercent4, 2)}</td>
+                  <td>{round(data.sumRekalkulaciqNaVlezniotProtok4, 3)}</td>
+                  <td>{round(data.zashtedaVodaM34, 3)}</td>
+                  <td>{round(data.zashtedaVodaPercent4, 1)}</td>
                   <td>{round(data.npvProtok4, 2)}</td>
                 </tr>
                 <tr>
                   <th>Редуктор модулиран на база на проток</th>
                   <td>{round(data.maxReduciranSredenPritisok5, 2)}</td>
                   <td>{round(data.maxReduciranKritichenPritisok5, 2)}</td>
-                  <td>{round(data.sumRekalkulaciqNaVlezniotProtok5, 2)}</td>
-                  <td>{round(data.zashtedaVodaM35, 2)}</td>
-                  <td>{round(data.zashtedaVodaPercent5, 2)}</td>
+                  <td>{round(data.sumRekalkulaciqNaVlezniotProtok5, 3)}</td>
+                  <td>{round(data.zashtedaVodaM35, 3)}</td>
+                  <td>{round(data.zashtedaVodaPercent5, 1)}</td>
                   <td>{round(data.npvProtok5, 2)}</td>
                 </tr>
               </tbody>
