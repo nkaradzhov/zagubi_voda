@@ -49,7 +49,7 @@ const Page4 = ({
                   <th>Редуциран среден притисок, m</th>
                   <th>Редуциран критичен притисок, m</th>
                   <th>
-                    Рекалкулиран влезен проток во систем, m<sup>3</sup>/h,{' '}
+                    Рекалкулиран влезен проток во систем, m<sup>3</sup>/h
                   </th>
                 </tr>
               </thead>
@@ -57,11 +57,11 @@ const Page4 = ({
                 {data.map((val, i) => (
                   <tr key={i}>
                     <td colSpan={1}>{val.hour}</td>
-                    <td colSpan={1}>{round(val.reduciranVlezenPritisok)}</td>
-                    <td colSpan={1}>{round(val.novSredenPritisok)}</td>
-                    <td colSpan={1}>{round(val.novKritichenPritisok)}</td>
+                    <td colSpan={1}>{round(val.reduciranVlezenPritisok, 2)}</td>
+                    <td colSpan={1}>{round(val.novSredenPritisok, 2)}</td>
+                    <td colSpan={1}>{round(val.novKritichenPritisok, 2)}</td>
                     <td colSpan={1}>
-                      {round(val.rekalkulaciqNaVlezniotProtok)}
+                      {round(val.rekalkulaciqNaVlezniotProtok, 3)}
                     </td>
                   </tr>
                 ))}
@@ -78,11 +78,11 @@ const Page4 = ({
                 <td>
                   Заштеда на вода ( m<sup>3</sup>/ден )
                 </td>
-                <td>{round(zashtedaVodaM3)}</td>
+                <td>{round(zashtedaVodaM3, 3)}</td>
               </tr>
               <tr>
                 <td>Заштеда на вода ( % )</td>
-                <td>{round(zashtedaVodaPercent)}</td>
+                <td>{round(zashtedaVodaPercent, 1)}</td>
               </tr>
             </tbody>
           </table>

@@ -109,7 +109,7 @@ const Page2 = ({ data, derived, change }) => (
                     Средна вредност на ноќниот притисок во мрежата, AZNP (m)
                   </BigTd>
                   <Highlighted colSpan={1}>
-                    {derived.averageZoneNightPressure}
+                    {round(derived.averageZoneNightPressure, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -120,7 +120,7 @@ const Page2 = ({ data, derived, change }) => (
                     Измерена минимална ноќна потрошувачка, m<sup>3</sup>/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.measuredMinimumZoneNightFlow)}
+                    {round(derived.measuredMinimumZoneNightFlow, 3)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -289,7 +289,7 @@ const Page2 = ({ data, derived, change }) => (
                     <sup>3</sup>/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.totalNormalNightUse)}
+                    {round(derived.totalNormalNightUse, 1)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -300,7 +300,7 @@ const Page2 = ({ data, derived, change }) => (
                     Загуби на вода од т.н. дефекти во позадина, m<sup>3</sup>/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.totalBackgroundLeakegeAtActualPressure)}
+                    {round(derived.totalBackgroundLeakegeAtActualPressure, 3)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -311,7 +311,7 @@ const Page2 = ({ data, derived, change }) => (
                     Вкупна очекувана ноќна потрошувачка, m<sup>3</sup>/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.totalExpectedNightUse)}
+                    {round(derived.totalExpectedNightUse, 3)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -323,7 +323,7 @@ const Page2 = ({ data, derived, change }) => (
                     <sup>3</sup>/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.unaccountedLeakageForNightFlow)}
+                    {round(derived.unaccountedLeakageForNightFlow, 3)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -334,7 +334,10 @@ const Page2 = ({ data, derived, change }) => (
                     Очекуван број на дефекти на цевководите
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.expectedNumberOfEquivalentServicePipeBursts)}
+                    {round(
+                      derived.expectedNumberOfEquivalentServicePipeBursts,
+                      0
+                    )}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -346,7 +349,7 @@ const Page2 = ({ data, derived, change }) => (
                     <sup>3</sup>/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.pressureIndependentFlowAtMNF)}
+                    {round(derived.pressureIndependentFlowAtMNF, 3)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -358,7 +361,7 @@ const Page2 = ({ data, derived, change }) => (
                     <sup>3</sup>/h
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.pressureDependentFlowAtMNF)}
+                    {round(derived.pressureDependentFlowAtMNF, 3)}
                   </Highlighted>
                 </tr>
               </tbody>

@@ -83,7 +83,9 @@ const Page7 = ({ data, derived, change }) => (
                     зона на потрошувачка при инсталирање на редуктор со фисен
                     излез, m<sup>3</sup>/ден
                   </BigTd>
-                  <Highlighted colSpan={1}>{derived.rsiv1}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.rsiv1, 3)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <BigTd>
@@ -91,15 +93,19 @@ const Page7 = ({ data, derived, change }) => (
                     зона на потрошувачка при инсталирање на редуктор модулиран
                     на база на временски интервали, m<sup>3</sup>/ден
                   </BigTd>
-                  <Highlighted colSpan={1}>{derived.rsiv2}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.rsiv2, 3)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <BigTd>
                     Р влез – редукција на произведената вода во анализираната
                     зона на потрошувачка при инсталирање на редуктор модулиран
-                    на база на проток/притисок, m<sup>3</sup>/ден{' '}
+                    на база на проток/притисок, m<sup>3</sup>/ден
                   </BigTd>
-                  <Highlighted colSpan={1}>{derived.rsiv3}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.rsiv3, 3)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <BigTd>
@@ -138,7 +144,9 @@ const Page7 = ({ data, derived, change }) => (
                     во водоснабдувањето во анализираната зона на потрошувачка,
                     мкд/m<sup>3</sup>
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.cmarge)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.cmarge, 2)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <BigTd>
@@ -152,9 +160,11 @@ const Page7 = ({ data, derived, change }) => (
                 <tr>
                   <WithTooltip id="1" tooltip="Cmarg (T)=OMT/Qsiv">
                     Cmarg(T) - чинење на третманот на водата за пиење во
-                    анализираната зона на потрошувачка, мкд/м3{' '}
+                    анализираната зона на потрошувачка, мкд/м3
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.cmargt)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.cmargt, 2)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <BigTd>rn – годишна инфлација, %</BigTd>
@@ -291,7 +301,9 @@ const Page7 = ({ data, derived, change }) => (
                     на приклучоците поради редуцирањето на работниот притисок со
                     инсталирање на редуктор со фисен излез, %
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.bfpr1)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.bfpr1, 1)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <WithTooltip
@@ -301,9 +313,11 @@ const Page7 = ({ data, derived, change }) => (
                     BFpr - Редукција на фрекфенцијата на настанување на дефекти
                     на приклучоците поради редуцирањето на работниот притисок со
                     инсталирање на редуктор модулиран на база на временски
-                    интервали, %{' '}
+                    интервали, %
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.bfpr2)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.bfpr2, 1)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <WithTooltip
@@ -315,7 +329,9 @@ const Page7 = ({ data, derived, change }) => (
                     инсталирање на редуктор модулиран на база на
                     проток/притисок, %
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.bfpr3)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.bfpr3, 1)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <WithTooltip
@@ -344,7 +360,9 @@ const Page7 = ({ data, derived, change }) => (
                     работниот притисок со инсталирање на редуктор со фисен
                     излез, %
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.bfdc1)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.bfdc1, 1)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <WithTooltip
@@ -356,7 +374,9 @@ const Page7 = ({ data, derived, change }) => (
                     работниот притисок со инсталирање на редуктор редуктор
                     модулиран на база на временски интервали, %
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.bfdc2)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.bfdc2, 1)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <WithTooltip
@@ -368,7 +388,9 @@ const Page7 = ({ data, derived, change }) => (
                     работниот притисок со инсталирање на редуктор модулиран на
                     база на проток/притисок, %
                   </WithTooltip>
-                  <Highlighted colSpan={1}>{round(derived.bfdc3)}</Highlighted>
+                  <Highlighted colSpan={1}>
+                    {round(derived.bfdc3, 1)}
+                  </Highlighted>
                 </tr>
                 <tr>
                   <BigTd>
@@ -376,7 +398,7 @@ const Page7 = ({ data, derived, change }) => (
                     инсталирање на редуктор со фисен излез, %
                   </BigTd>
                   <Highlighted colSpan={1}>
-                    {round(derived.reductionMaxPressure1)}
+                    {round(derived.reductionMaxPressure1, 1)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -386,7 +408,7 @@ const Page7 = ({ data, derived, change }) => (
                     интервали, %
                   </BigTd>
                   <Highlighted colSpan={1}>
-                    {round(derived.reductionMaxPressure2)}
+                    {round(derived.reductionMaxPressure2, 1)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -396,7 +418,7 @@ const Page7 = ({ data, derived, change }) => (
                     проток/притисок, %
                   </BigTd>
                   <Highlighted colSpan={1}>
-                    {round(derived.reductionMaxPressure3)}
+                    {round(derived.reductionMaxPressure3, 1)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -486,7 +508,7 @@ const Page7 = ({ data, derived, change }) => (
                     мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eb1fiksen)}
+                    {round(derived.eb1fiksen, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -499,7 +521,7 @@ const Page7 = ({ data, derived, change }) => (
                     по инсталирање на РП, мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eb2fiksen)}
+                    {round(derived.eb2fiksen, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -513,7 +535,7 @@ const Page7 = ({ data, derived, change }) => (
                     одржување, мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eo1fiksen)}
+                    {round(derived.eo1fiksen, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -526,7 +548,7 @@ const Page7 = ({ data, derived, change }) => (
                     притисокот), мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eo2fiksen)}
+                    {round(derived.eo2fiksen, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -539,7 +561,7 @@ const Page7 = ({ data, derived, change }) => (
                     мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.npvfiksen)}
+                    {round(derived.npvfiksen, 2)}
                   </Highlighted>
                 </tr>
 
@@ -559,7 +581,7 @@ const Page7 = ({ data, derived, change }) => (
                     мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eb1interval)}
+                    {round(derived.eb1interval, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -572,7 +594,7 @@ const Page7 = ({ data, derived, change }) => (
                     по инсталирање на РП, мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eb2interval)}
+                    {round(derived.eb2interval, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -586,7 +608,7 @@ const Page7 = ({ data, derived, change }) => (
                     одржување, мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eo1interval)}
+                    {round(derived.eo1interval, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -599,7 +621,7 @@ const Page7 = ({ data, derived, change }) => (
                     притисокот), мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eo2interval)}
+                    {round(derived.eo2interval, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -612,7 +634,7 @@ const Page7 = ({ data, derived, change }) => (
                     мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.npvinterval)}
+                    {round(derived.npvinterval, 2)}
                   </Highlighted>
                 </tr>
 
@@ -631,7 +653,7 @@ const Page7 = ({ data, derived, change }) => (
                     мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eb1Protok)}
+                    {round(derived.eb1Protok, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -644,7 +666,7 @@ const Page7 = ({ data, derived, change }) => (
                     по инсталирање на РП, мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eb2Protok)}
+                    {round(derived.eb2Protok, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -658,7 +680,7 @@ const Page7 = ({ data, derived, change }) => (
                     одржување, мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eo1Protok)}
+                    {round(derived.eo1Protok, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -671,7 +693,7 @@ const Page7 = ({ data, derived, change }) => (
                     притисокот), мкд/год
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.eo2Protok)}
+                    {round(derived.eo2Protok, 2)}
                   </Highlighted>
                 </tr>
                 <tr>
@@ -683,7 +705,7 @@ const Page7 = ({ data, derived, change }) => (
                     инсталирање на редукторот на притисок во анализираната зона
                   </WithTooltip>
                   <Highlighted colSpan={1}>
-                    {round(derived.npvProtok)}
+                    {round(derived.npvProtok, 2)}
                   </Highlighted>
                 </tr>
               </tbody>
