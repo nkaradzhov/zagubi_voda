@@ -10,6 +10,19 @@ import NumberInput from '../components/NumberInput'
 
 import { updateAction, selectors } from '../reducers/page3'
 
+const calculate = (...args) => {
+  let count = 0
+  let sum = 0
+  for (let n of args) {
+    const num = Number(n)
+    if (num) {
+      sum += num
+      count++
+    }
+  }
+  return sum / (count || 1)
+}
+
 const TextInput = ({ value, onChange, ...rest }) => (
   <input
     type="text"
@@ -38,7 +51,7 @@ const Page3 = ({ data, derivedData, change }) => {
               <table>
                 <tbody>
                   <tr>
-                    <th>Опис</th>
+                    <th>бр. на чекор</th>
                     <th>Почеток</th>
                     <th>Крај</th>
                     <th className="col-sm-2">Влез во систем</th>
@@ -48,19 +61,22 @@ const Page3 = ({ data, derivedData, change }) => {
                     <th colSpan={3}>Пресметка на N1</th>
                   </tr>
                   <tr>
-                    <td />
-                    <td />
-                    <td />
+                    <th />
+                    <th>час</th>
+                    <th>час</th>
 
                     <th>
-                      m<sup>3</sup>/h
+                      m<sup>3</sup>
+                      /h
                     </th>
                     <th>m</th>
                     <th>
-                      m<sup>3</sup>/h
+                      m<sup>3</sup>
+                      /h
                     </th>
                     <th>
-                      m<sup>3</sup>/h
+                      m<sup>3</sup>
+                      /h
                     </th>
                     <th>Почеток</th>
                     <th>Фаза 1</th>
@@ -95,7 +111,7 @@ const Page3 = ({ data, derivedData, change }) => {
                     <td>
                       {round(derivedData.pressureIndependentFlowAtMNF, 2)}
                     </td>
-                    <td>{round(derivedData.pochetni.nezavisni, 2)}</td>
+                    <td>{round(derivedData.pochetni.nezavisni, 3)}</td>
                     <td>{round(derivedData.pochetni.pochetokN1, 2)}</td>
                     <td>{round(derivedData.pochetni.faza1N1, 2)}</td>
                     <td>{round(derivedData.pochetni.faza2N1, 2)}</td>
@@ -129,7 +145,7 @@ const Page3 = ({ data, derivedData, change }) => {
                     <td>
                       {round(derivedData.pressureIndependentFlowAtMNF, 2)}
                     </td>
-                    <td>{round(derivedData.chekor1.nezavisni, 2)}</td>
+                    <td>{round(derivedData.chekor1.nezavisni, 3)}</td>
                     <td>{round(derivedData.chekor1.pochetokN1, 2)}</td>
                     <td>{round(derivedData.chekor1.faza1N1, 2)}</td>
                     <td>{round(derivedData.chekor1.faza2N1, 2)}</td>
@@ -163,7 +179,7 @@ const Page3 = ({ data, derivedData, change }) => {
                     <td>
                       {round(derivedData.pressureIndependentFlowAtMNF, 2)}
                     </td>
-                    <td>{round(derivedData.chekor2.nezavisni, 2)}</td>
+                    <td>{round(derivedData.chekor2.nezavisni, 3)}</td>
                     <td>{round(derivedData.chekor2.pochetokN1, 2)}</td>
                     <td>{round(derivedData.chekor2.faza1N1, 2)}</td>
                     <td>{round(derivedData.chekor2.faza2N1, 2)}</td>
@@ -197,7 +213,7 @@ const Page3 = ({ data, derivedData, change }) => {
                     <td>
                       {round(derivedData.pressureIndependentFlowAtMNF, 2)}
                     </td>
-                    <td>{round(derivedData.chekor3.nezavisni, 2)}</td>
+                    <td>{round(derivedData.chekor3.nezavisni, 3)}</td>
                     <td>{round(derivedData.chekor3.pochetokN1, 2)}</td>
                     <td>{round(derivedData.chekor3.faza1N1, 2)}</td>
                     <td>{round(derivedData.chekor3.faza2N1, 2)}</td>
@@ -231,10 +247,36 @@ const Page3 = ({ data, derivedData, change }) => {
                     <td>
                       {round(derivedData.pressureIndependentFlowAtMNF, 2)}
                     </td>
-                    <td>{round(derivedData.chekor4.nezavisni, 2)}</td>
+                    <td>{round(derivedData.chekor4.nezavisni, 3)}</td>
                     <td>{round(derivedData.chekor4.pochetokN1, 2)}</td>
                     <td>{round(derivedData.chekor4.faza1N1, 2)}</td>
                     <td>{round(derivedData.chekor4.faza2N1, 2)}</td>
+                  </tr>
+                  <tr>
+                    <td colSpan={4} />
+                    <th colSpan={3}>Средна вредност N1</th>
+                    <td colSpan={3}>
+                      {round(
+                        calculate(
+                          derivedData.pochetni.pochetokN1,
+                          derivedData.pochetni.faza1N1,
+                          derivedData.pochetni.faza2N1,
+                          derivedData.chekor1.pochetokN1,
+                          derivedData.chekor1.faza1N1,
+                          derivedData.chekor1.faza2N1,
+                          derivedData.chekor2.pochetokN1,
+                          derivedData.chekor2.faza1N1,
+                          derivedData.chekor2.faza2N1,
+                          derivedData.chekor3.pochetokN1,
+                          derivedData.chekor3.faza1N1,
+                          derivedData.chekor3.faza2N1,
+                          derivedData.chekor4.pochetokN1,
+                          derivedData.chekor4.faza1N1,
+                          derivedData.chekor4.faza2
+                        ),
+                        2
+                      )}
+                    </td>
                   </tr>
                 </tbody>
               </table>
