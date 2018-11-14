@@ -25,8 +25,13 @@ input {
   border: none;
   width: 100%;
   text-align: center;
-  outline-color: green;
+  outline-color: #008000c2;
   outline-width: 2px;
+  background-color: #e4f4f933;
+  cursor: pointer;
+}
+input:focus {
+  background-color: #e7f3e7ad;
 }
 
 .highlighted,

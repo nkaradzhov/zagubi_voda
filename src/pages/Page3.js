@@ -7,6 +7,7 @@ import Page from '../components/Page'
 import round from '../util/round'
 import { pageTitles } from '../util/constants'
 import NumberInput from '../components/NumberInput'
+import WithParentHeight from '../components/WithParentHeight'
 
 import { updateAction, selectors } from '../reducers/page3'
 
@@ -24,14 +25,19 @@ const calculate = (...args) => {
 }
 
 const TextInput = ({ value, onChange, ...rest }) => (
-  <input
-    type="text"
-    value={value}
-    onChange={e => {
-      onChange && onChange(e.target.value)
-    }}
-    {...rest}
-  />
+  <WithParentHeight>
+    {height => (
+      <input
+        type="text"
+        style={{ lineHeight: `${height}px` }}
+        value={value}
+        onChange={e => {
+          onChange && onChange(e.target.value)
+        }}
+        {...rest}
+      />
+    )}
+  </WithParentHeight>
 )
 
 const prev = { to: '/page2', tooltip: pageTitles.page2 }
