@@ -243,7 +243,7 @@ const npvfiksenSelector = createSelector(
     eo1fiksenSelector,
     eo2fiksenSelector,
     path(['page7', 'yearOfReductor']),
-    path(['page7', 'annualSiv'])
+    path(['page7', 'annualInflationRate'])
   ],
   (eb1, eb2, eo1, eo2, yearOfReductor, annualInflationRate) =>
     (eb1 + eb2 - eo1 - eo2) /

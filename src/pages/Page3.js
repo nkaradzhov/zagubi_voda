@@ -272,7 +272,7 @@ const Page3 = ({ data, derivedData, change }) => {
                           derivedData.chekor3.faza2N1,
                           derivedData.chekor4.pochetokN1,
                           derivedData.chekor4.faza1N1,
-                          derivedData.chekor4.faza2
+                          derivedData.chekor4.faza2N1
                         ),
                         2
                       )}
